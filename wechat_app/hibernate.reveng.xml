@@ -117,7 +117,7 @@
 			type="integer">
 		</column>
 	</table>
-	<table name="OP_TABLE" schema="WECHAT">
+	<table name="OP_TABLE" >
 		<column name="WECHAT_ID"></column>
 		<column name="STATUS" type="integer" jdbc-type="INTEGER"></column>
 		<column name="ONLINE_FLAG" type="integer" jdbc-type="INTEGER"></column>
@@ -126,10 +126,10 @@
 		</column>
 		<column name="SIGN_FLAG" type="integer" jdbc-type="INTEGER"></column>
 	</table>
-	<table name="WECHAT_MENU_ITEM" schema="WECHAT">
+	<table name="WECHAT_MENU_ITEM" >
 		<column name="MENU_TYPE" type="integer" jdbc-type="INTEGER"></column>
 	</table>
-	<table name="SYS_BUTTON" schema="WECHAT">
+	<table name="SYS_BUTTON" >
 		<primary-key>
 
 
@@ -145,32 +145,32 @@
 		</column>
 	</table>
 	
-	<table name="PUBLIC_ACCOUNT" schema="WECHAT">
+	<table name="PUBLIC_ACCOUNT" >
 		<column name="WECHAT_TYPE" jdbc-type="INTEGER" type="integer"></column>
 	</table>
-	<table name="SYS_MENU" schema="WECHAT">
+	<table name="SYS_MENU" >
 		<column name="MENU_LEVEL" jdbc-type="INTEGER" type="integer"></column>
 		<column name="MENU_ORDER" jdbc-type="INTEGER" type="integer"></column>
 	</table>
-	<table name="SYS_PARAM_CATALOG" schema="WECHAT">
+	<table name="SYS_PARAM_CATALOG" >
 		<primary-key>
 			<key-column name="CATALOG" jdbc-type="INTEGER"
 				type="integer" />
 		</primary-key>
 	</table>
-	<table name="SYS_ROLE" schema="WECHAT">
+	<table name="SYS_ROLE" >
 		<primary-key>
 			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
 		</primary-key>
 		<column name="CATALOG" jdbc-type="INTEGER" type="integer"></column>
 		<column name="ORG_TYPE" jdbc-type="INTEGER" type="integer"></column>
 	</table>
-	<table name="WECHAT_MEDIA" schema="WECHAT">
+	<table name="WECHAT_MEDIA" >
 		<column name="MEDIA_RESOURCE" jdbc-type="INTEGER"
 			type="integer">
 		</column>
 	</table>
-	<table name="WECHAT_MESSAGE" schema="WECHAT">
+	<table name="WECHAT_MESSAGE" >
 		<column name="MESSAGE_MODE" jdbc-type="INTEGER"
 			type="integer">
 		</column>
@@ -178,15 +178,15 @@
 			type="integer">
 		</column>
 	</table>
-	<table name="WORD" schema="WECHAT">
+	<table name="WORD" >
 		<column name="WORD_COUNT" jdbc-type="INTEGER" type="integer"></column>
 		<column name="KEY" jdbc-type="INTEGER" type="integer"></column>
 	</table>
-	<table name="QUESTION" schema="WECHAT">
+	<table name="QUESTION" >
 		<column name="ASK_COUNT" jdbc-type="INTEGER" type="integer"></column>
 		<column name="QTYPE" jdbc-type="INTEGER" type="integer"></column>
 	</table>
-	<table name="ANSWER" schema="WECHAT">
+	<table name="ANSWER" >
 		<column name="ADOPT_COUNT" jdbc-type="INTEGER" type="integer"></column>
 	</table>
 </hibernate-reverse-engineering>
