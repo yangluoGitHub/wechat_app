@@ -1,0 +1,12 @@
+<input type="hidden" id="script.common.dateFormat" value="<%=resource.srcStr("script.common.dateFormat") %>" />
+<input type="hidden" id="script.common.yearLimit" value="<%=resource.srcStr("script.common.yearLimit") %>" />
+<input type="hidden" id="script.common.monthLimit" value="<%=resource.srcStr("script.common.monthLimit") %>" />
+<input type="hidden" id="script.common.DateLimit" value="<%=resource.srcStr("script.common.DateLimit") %>" />
+<input type="hidden" id="script.common.notSelect" value="<%=resource.srcStr("script.common.notSelect") %>" />
+<input type="hidden" id="script.common.invalidCharacter" value="<%=resource.srcStr("script.common.invalidCharacter") %>" />
+<input type="hidden" id="script.common.ipAddressError" value="<%=resource.srcStr("script.common.ipAddressError") %>" />
+<input type="hidden" id="script.common.ipError" value="<%=resource.srcStr("script.common.ipError") %>" />
+<input type="hidden" id="script.common.ipLimit" value="<%=resource.srcStr("script.common.ipLimit") %>" />
+<input type="hidden" id="script.common.inputLengthLimit" value="<%=resource.srcStr("script.common.inputLengthLimit") %>" />
+<input type="hidden" id="System.fault_email_format" value="<%=resource.srcStr("System.fault_email_format") %>" />
+<input type="hidden" id="script.common.no" value="<%=resource.srcStr("script.common.no") %>" />

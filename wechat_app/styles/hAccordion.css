@@ -1,0 +1,51 @@
+.handle{
+	diaplay:inline;
+	float:left;
+	margin:0px;
+	padding:5px auto;
+	width:30px;
+	height:455px;
+	border-style: solid;
+  	border-width: 1px;
+  	border-color: transparent;
+  	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	-webkit-transition:0.3s ease-in-out;
+	-moz-transition:0.3s ease-in-out;
+	-o-transition:0.3s ease-in-out;
+	-ms-transition:0.3s ease-in-out;
+  	background:#DBE5EE;
+	cursor:pointer;
+	
+	font:bold 15px Arial, Helvetica, sans-serif;
+	text-align:center;;
+	writing-mode:tb-rl;
+	color:#877D7D;
+}
+.slide{
+	diaplay:inline;
+	float:left;
+	margin:0px;
+	padding:0px;
+	width:auto;
+	height:auto;
+	border-style: solid;
+  	border-width: 1px;
+  	border-color: transparent;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	background:#ffffff;
+	display:none;
+}
+.handleOver{
+	background:#817E7E;
+	color:#DBE5EE;
+}
+.handleSelect{
+	background:#C5C1C1;
+	color:#DBE5EE;
+}

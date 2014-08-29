@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+        <property name="paramName">
+            <value>action</value>
+        </property>        
+    </bean>
+    
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">maxUploadExceeded</prop>
+			</props> 
+		</property>
+	</bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize">
+	        <value>20971520</value>
+	    </property>
+	    <property name="maxInMemorySize">
+	        <value>4096</value>
+	    </property>
+	</bean>
+	
+    <bean id="timeoutInterceptor" class="com.weili.wechat.common.TimeoutInterceptor"/>
+    <bean id="authInterceptor" class="com.weili.wechat.common.AuthInterceptor">
+    </bean>
+    <bean id="requestInterceptor" class="com.weili.wechat.common.RequestInterceptor">
+    	<description>请求数据拦截</description>
+    	<property name="logAudit" ref="logAudit" />
+	</bean>	
+    <bean id="logInterceptor" class="com.weili.wechat.common.LogInterceptor">
+    	<description>Url方式记日志</description>
+    	<property name="logAudit" ref="logAudit" />
+    	<property name="logAuditService" ref="logAuditService" />
+    	<property name="userService" ref="userService" />
+	</bean>		
+			
+  	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+		    <list>
+		        <ref local="timeoutInterceptor"/>
+		        <ref local="authInterceptor"/>
+		        <ref local="requestInterceptor"/>
+		        <ref local="logInterceptor"/>
+		    </list>
+		</property>
+		
+		<property name="mappings">
+			<props>
+                <!--login-->
+			    <prop key="*/login.do">loginController</prop>
+			    
+			    <!--system-->
+			    <prop key="*/user.do">userController</prop>
+			    <prop key="*/role.do">roleController</prop>
+			    <prop key="*/param.do">sysParamController</prop>
+			    <prop key="*/staticPages.do">staticPagesController</prop>
+				
+				<!-- 公众号管理 -->
+			    <prop key="*/account.do">accountController</prop>				
+				<!-- 业务功能管理 -->
+			    <prop key="*/menuFunction.do">menuFunctionController</prop>	
+			    <prop key="*/jarUp.do">jarUpController</prop>						
+				<!-- 素材管理 -->
+				<prop key="*/media.do">mediaController</prop>
+				<!-- 微信菜单管理 -->
+				<prop key="*/weMenu.do">weMenuController</prop>				
+                 <!-- 图文管理 -->
+                <prop key="*/imageText.do">imageTextController</prop>
+				<!-- 消息管理 -->
+				<prop key="*/message.do">messageController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 登录 -->
+	<bean id="loginController" class="com.weili.wechat.web.login.LoginController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="loginService" ref ="loginService"/>
+		<property name="userService" ref ="userService"/>
+		<property name="sysRoleService" ref ="sysRoleService"/>
+	</bean>
+	
+	
+	<!-- 系统管理 -->
+	<!-- 用户管理 -->
+	<bean id="userController" class="com.weili.wechat.web.system.UserController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="userService" ref ="userService"/>
+		<property name="sysRoleService" ref ="sysRoleService"/>
+		<property name="sysParamService" ref ="sysParamService"/>
+	</bean>
+
+	<!-- 角色管理 -->
+	<bean id="roleController" class="com.weili.wechat.web.system.RoleController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="roleService" ref ="roleService"/>
+	</bean>
+	 
+	<!-- 公众号管理 -->
+	<bean id="accountController" class="com.weili.wechat.web.manage.AccountController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="accountService" ref ="accountService"/>
+	</bean>
+	<!-- 菜单功能项管理 -->
+	<bean id="menuFunctionController" class="com.weili.wechat.web.manage.MenuFunctionController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="menuFunctionService" ref ="menuFunctionService"/>
+		<property name="accountService" ref ="accountService"/>
+		<property name="userService" ref ="userService"/>
+	</bean>
+	<bean id="jarUpController" class="com.weili.wechat.web.manage.JarUpController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="jarUpService" ref="jarUpService"/>
+	</bean>
+	
+	<!-- 素材管理 -->
+	<bean id="mediaController" class="com.weili.wechat.web.manage.MediaController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="mediaService" ref="mediaService"/>
+	</bean>
+	<!-- 微信菜单管理 -->
+	<bean id="weMenuController" class="com.weili.wechat.web.manage.WeMenuController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="weMenuService" ref="weMenuService"/>
+	</bean>
+	<!-- 系统运行参数 -->
+	<bean id="sysParamController" class="com.weili.wechat.web.system.SysParamController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>		
+		<property name="sysParamService" ref ="sysParamService"/>
+	</bean>
+	
+	<bean id="staticPagesController" class="com.weili.wechat.web.system.StaticPagesController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+ 	</bean>
+ 	
+ 	<bean id="imageTextController" class="com.weili.wechat.web.manage.ImageTextController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="imageTextService" ref ="imageTextService"/>
+    	<property name="mediaService" ref ="mediaService"/>
+    	<property name="menuFunctionService" ref ="menuFunctionService"></property>
+ 	</bean>
+	
+	<bean id="messageController" class="com.weili.wechat.web.manage.MessageController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="messageService" ref ="messageService"/>
+ 	</bean>
+</beans>

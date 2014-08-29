@@ -1,0 +1,34 @@
+
+.left {
+	FLOAT: left
+}
+.right {
+	FLOAT: right
+}
+A {
+	COLOR: #0376eb; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #0376eb; TEXT-DECORATION: none
+}
+P {
+	FONT-SIZE: 12px; FONT-FAMILY: tahoma,Arial,Helvetica,sans-serif; COLOR: #000; LINE-HEIGHT: 22px
+}
+TD {
+	OVERFLOW: hidden; WORD-WRAP: break-word; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px
+}
+INPUT {
+	HEIGHT: 18px; PADDING-LEFT: 3px
+}
+SPAN {
+	COLOR: #333333
+}
+
+.title_mid {
+	HEIGHT: 25px;  FONT-WEIGHT: bold; COLOR: #000; PADDING-TOP: 4px; LINE-HEIGHT: 20px
+}
+
+.right_con {
+	BORDER-TOP: #e3e3e3 1px solid; BORDER-RIGHT: #e3e3e3 1px solid; BORDER-BOTTOM: #e3e3e3 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; BORDER-LEFT: #e3e3e3 1px solid; DISPLAY: inline-block; PADDING-RIGHT: 0px; BACKGROUND-COLOR: #fff
+}
+

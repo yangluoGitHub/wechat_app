@@ -1,0 +1,70 @@
+/*--------------------------------------------------|
+| dTree 2.05 | www.destroydrop.com/javascript/tree/ |
+|---------------------------------------------------|
+| Copyright (c) 2002-2003 Geir Landr?              |
+|--------------------------------------------------*/
+
+.dtree {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666;
+	white-space: nowrap;
+}
+.dtree img {
+	border: 0px;
+	vertical-align: middle;
+}
+.dtree a {
+	color: #333;
+	text-decoration: none;
+}
+.dtree a.node, .dtree a.nodeSel {
+	white-space: nowrap;
+	padding: 1px 2px 1px 2px;
+}
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+	color: #33e;
+
+}
+.dtree a.nodeSel {
+	background-color: ;
+}
+.dtree .clip {
+	overflow: hidden;
+}
+td {
+	font-size: 13px;
+	color: #000000;	
+}
+.table1{                            
+    background-color: #aaaaaa;
+}
+.tr1{
+	height:22px;
+	background-color: #DBE5EE;
+}
+.tr2{
+	height:22px;
+	background-color: #ffffff;    
+	font-weight:bold;
+}
+.tr3{
+	height:22px;
+	background-color: #ffffff;    
+}
+.tr4{
+	height:22px;
+	background-color: #eeeeee;    
+}
+
+.td1{
+	height:22px;
+	background-color: #E8EFF7;    
+}
+.td2{
+	height:22px;
+	background-color: #ffffff;    
+}
+.button{
+  width:62px; border-left: #2c59aa 1px solid; border-right: #2c59aa 1px solid; border-top: #2c59aa 1px solid; border-bottom: #2c59aa 1px solid; padding-top: 2px; padding-right: 2px; padding-left: 2px; font-size: 12px; filter: progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#ffffff, endcolorstr=#c3daf5); cursor: hand; color: black;
+}

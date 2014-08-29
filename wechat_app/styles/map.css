@@ -1,0 +1,5 @@
+/*
+ * 附加信息Div样式
+ */
+.mapFieldSetDiv{position:absolute; width:98%; height:94%;overflow: auto;padding: 10px 10px 10px 10px;}
+.mapFieldSetInnerDiv{width:100%;padding:3px;white-space:nowrap;cursor:pointer;}
