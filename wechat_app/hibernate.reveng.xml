@@ -152,6 +152,9 @@
 		<column name="MENU_LEVEL" jdbc-type="INTEGER" type="integer"></column>
 		<column name="MENU_ORDER" jdbc-type="INTEGER" type="integer"></column>
 	</table>
+	<table name="SYS_PARAM" >
+		<column name="CATALOG" jdbc-type="INTEGER" type="integer" />
+	</table>
 	<table name="SYS_PARAM_CATALOG" >
 		<primary-key>
 			<key-column name="CATALOG" jdbc-type="INTEGER"

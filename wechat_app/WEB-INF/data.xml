@@ -34,7 +34,6 @@
     	
     	<property name="filters" value="stat" /> 	
 	</bean>
-	
 	<!-- 
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName">
