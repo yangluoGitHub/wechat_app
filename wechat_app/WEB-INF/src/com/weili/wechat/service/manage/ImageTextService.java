@@ -3,8 +3,6 @@ package com.weili.wechat.service.manage;
 import java.util.List;
 import java.util.Map;
 
-import java_cup.internal_error;
-
 import com.weili.wechat.common.IRetInfo;
 import com.weili.wechat.hibernate.WechatArticle;
 import com.weili.wechat.hibernate.WechatResource;
@@ -36,5 +34,9 @@ public interface ImageTextService extends IRetInfo {
 	public  int updateArticle(WechatArticle wechatArticle);
 	
 	public WechatArticle qryArticleById(String id);
+	
+	public List<WechatArticle> qryArticleSByFunctionName(String functionName);
+	
+	public Map<String, Object> clickMenuResponse(String eventKey);
 	
 }

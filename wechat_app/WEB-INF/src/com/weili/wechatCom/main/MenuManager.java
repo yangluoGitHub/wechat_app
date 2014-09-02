@@ -127,22 +127,28 @@ public class MenuManager {
 	
 	public static void main(String[] args) {
 		// 第三方用户唯一凭证
-		String appId = "wxb4653e19ffb108ff";
-		// 第三方用户唯一凭证密钥
-		String appSecret = "70f901c2390ad67d69f0d6011ad83880";
-
-		// 调用接口获取凭证
-		Token token = CommonUtil.getToken(appId, appSecret);
-
-		if (null != token) {
-			// 创建菜单
-			boolean result = MenuUtil.createMenu(getMenu(), token.getAccessToken());
-
-			// 判断菜单创建结果
-			if (result)
-				log.info("菜单创建成功！");
-			else
-				log.info("菜单创建失败！");
-		}
+//		String appId = "wxb4653e19ffb108ff";
+//		// 第三方用户唯一凭证密钥
+//		String appSecret = "70f901c2390ad67d69f0d6011ad83880";
+//
+//		// 调用接口获取凭证
+//		Token token = CommonUtil.getToken(appId, appSecret);
+//
+//		if (null != token) {
+//			// 创建菜单
+//			boolean result = MenuUtil.createMenu(getMenu(), token.getAccessToken());
+//
+//			// 判断菜单创建结果
+//			if (result)
+//				log.info("菜单创建成功！");
+//			else
+//				log.info("菜单创建失败！");
+//		}
+		
+		String aa = "6119a175-dcbf-4630-bf3d-6bde56d8107c";
+		String aaa= aa.split("\\|")[1];
+		System.out.println(aaa);
+		
+		
 	}
 }

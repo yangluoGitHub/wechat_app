@@ -168,6 +168,7 @@ function closeImageText() {
     divOpenWinImageText.style.display = "none";
     window.onResize = null;
    document.getElementById("divOpenWinImageText").style.display = "none";
+   
 }
 
 function sortedUp(id){
@@ -303,6 +304,16 @@ function preview(url){
 function closePreviewImage(){
 	document.getElementById("previewImage").style.display = "none";
 }
+//关闭子窗口div
+function closeSubWindow(mydiv) {
+    //显示select控件
+    DispalySelect(1);
+    //处理遮罩层
+    divPageMask.style.width = "0px";
+    divPageMask.style.height = "0px";
+    document.getElementById(mydiv).style.display = "none";
+    window.onResize = null;
+}
 </script>
 <input type="hidden" id="tmp_multiImageText" value="${wechatResource.multiresourceId }">
 <table width="100%" style="border:0px;border-bottom:1px solid #cccccc">
@@ -360,6 +371,7 @@ function closePreviewImage(){
 </display:table>
 <p align="center">
 	<input name="button" type="button" class="button" onClick="closeImageText()" value='确定'>
+	<input name="button" type="button" class="button" onClick="closeSubWindow('divOpenWinImageText')" value='取消'>
 </p>
 </div>
  

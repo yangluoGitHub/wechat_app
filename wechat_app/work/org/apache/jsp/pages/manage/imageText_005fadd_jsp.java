@@ -331,6 +331,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\t\tmultiImageTextInfo += id+\"|\";\r\n");
       out.write("\t});\r\n");
       out.write("\tmultiImageTextInfo = multiImageTextInfo.substring(0, multiImageTextInfo.length-1);\r\n");
+      out.write("\talert(multiImageTextInfo);\r\n");
       out.write("\tj$(\"#multiImageTextInfo\").val(multiImageTextInfo);\r\n");
       out.write("\tform1.submit();\r\n");
       out.write("\treturn true;\r\n");
@@ -362,23 +363,23 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
       org.displaytag.tags.el.ELTableTag _jspx_th_display_005ftable_005f0 = (org.displaytag.tags.el.ELTableTag) _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005fsort_005frequestURI_005fpagesize_005fname_005fid_005fclass_005fcellspacing_005fcellpadding.get(org.displaytag.tags.el.ELTableTag.class);
       _jspx_th_display_005ftable_005f0.setPageContext(_jspx_page_context);
       _jspx_th_display_005ftable_005f0.setParent(null);
-      // /pages/manage/imageText_add.jsp(282,0) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setName("requestScope.mediaList");
-      // /pages/manage/imageText_add.jsp(282,0) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setUid("media");
-      // /pages/manage/imageText_add.jsp(282,0) name = sort type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = sort type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setSort("list");
-      // /pages/manage/imageText_add.jsp(282,0) name = requestURI type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = requestURI type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setRequestURI("imageText.do");
-      // /pages/manage/imageText_add.jsp(282,0) name = cellspacing type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = cellspacing type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setCellspacing("1");
-      // /pages/manage/imageText_add.jsp(282,0) name = cellpadding type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = cellpadding type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setCellpadding("3");
-      // /pages/manage/imageText_add.jsp(282,0) name = class type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = class type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setClass("table1");
-      // /pages/manage/imageText_add.jsp(282,0) name = style type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = style type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setStyle("word-break:break-all");
-      // /pages/manage/imageText_add.jsp(282,0) name = pagesize type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/imageText_add.jsp(283,0) name = pagesize type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setPagesize("15");
       int _jspx_eval_display_005ftable_005f0 = _jspx_th_display_005ftable_005f0.doStartTag();
       if (_jspx_eval_display_005ftable_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -411,7 +412,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
           org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f4 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
           _jspx_th_display_005fcolumn_005f4.setPageContext(_jspx_page_context);
           _jspx_th_display_005fcolumn_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-          // /pages/manage/imageText_add.jsp(295,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+          // /pages/manage/imageText_add.jsp(296,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
           _jspx_th_display_005fcolumn_005f4.setTitle(resource.srcStr("Main.op"));
           int _jspx_eval_display_005fcolumn_005f4 = _jspx_th_display_005fcolumn_005f4.doStartTag();
           if (_jspx_eval_display_005fcolumn_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -552,7 +553,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f0 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f0.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/imageText_add.jsp(283,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(284,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f0.setTitle("选择");
     int _jspx_eval_display_005fcolumn_005f0 = _jspx_th_display_005fcolumn_005f0.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -593,11 +594,11 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f1 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle_005fsortable_005fsortName.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f1.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/imageText_add.jsp(286,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(287,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f1.setTitle("名称");
-    // /pages/manage/imageText_add.jsp(286,4) name = sortable type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(287,4) name = sortable type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f1.setSortable("true");
-    // /pages/manage/imageText_add.jsp(286,4) name = sortName type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(287,4) name = sortName type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f1.setSortName("no");
     int _jspx_eval_display_005fcolumn_005f1 = _jspx_th_display_005fcolumn_005f1.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -637,7 +638,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f1);
-    // /pages/manage/imageText_add.jsp(287,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(288,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${media.mediaName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -656,7 +657,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f2 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f2.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/imageText_add.jsp(289,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(290,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f2.setTitle("描述");
     int _jspx_eval_display_005fcolumn_005f2 = _jspx_th_display_005fcolumn_005f2.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -696,7 +697,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f2);
-    // /pages/manage/imageText_add.jsp(290,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(291,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${media.describe}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -715,7 +716,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f3 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f3.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/imageText_add.jsp(292,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(293,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f3.setTitle("创建时间");
     int _jspx_eval_display_005fcolumn_005f3 = _jspx_th_display_005fcolumn_005f3.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -755,7 +756,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f3);
-    // /pages/manage/imageText_add.jsp(293,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(294,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${media.createDate} ${media.createTime}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -774,7 +775,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f4);
-    // /pages/manage/imageText_add.jsp(296,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(297,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${media.mediaResource == 0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -807,7 +808,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f4);
-    // /pages/manage/imageText_add.jsp(299,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(300,2) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${media.mediaResource == 1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -838,23 +839,23 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELTableTag _jspx_th_display_005ftable_005f1 = (org.displaytag.tags.el.ELTableTag) _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005fsort_005frequestURI_005fpagesize_005fname_005fid_005fclass_005fcellspacing_005fcellpadding.get(org.displaytag.tags.el.ELTableTag.class);
     _jspx_th_display_005ftable_005f1.setPageContext(_jspx_page_context);
     _jspx_th_display_005ftable_005f1.setParent(null);
-    // /pages/manage/imageText_add.jsp(311,0) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setName("requestScope.resList");
-    // /pages/manage/imageText_add.jsp(311,0) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setUid("res");
-    // /pages/manage/imageText_add.jsp(311,0) name = sort type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = sort type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setSort("list");
-    // /pages/manage/imageText_add.jsp(311,0) name = requestURI type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = requestURI type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setRequestURI("imageText.do");
-    // /pages/manage/imageText_add.jsp(311,0) name = cellspacing type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = cellspacing type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setCellspacing("1");
-    // /pages/manage/imageText_add.jsp(311,0) name = cellpadding type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = cellpadding type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setCellpadding("3");
-    // /pages/manage/imageText_add.jsp(311,0) name = class type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = class type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setClass("table1");
-    // /pages/manage/imageText_add.jsp(311,0) name = style type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = style type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setStyle("word-break:break-all");
-    // /pages/manage/imageText_add.jsp(311,0) name = pagesize type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(312,0) name = pagesize type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005ftable_005f1.setPagesize("15");
     int _jspx_eval_display_005ftable_005f1 = _jspx_th_display_005ftable_005f1.doStartTag();
     if (_jspx_eval_display_005ftable_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -902,7 +903,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f5 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f5.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f1);
-    // /pages/manage/imageText_add.jsp(312,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(313,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f5.setTitle("选择");
     int _jspx_eval_display_005fcolumn_005f5 = _jspx_th_display_005fcolumn_005f5.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -948,7 +949,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f6 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f6.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f1);
-    // /pages/manage/imageText_add.jsp(316,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(317,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f6.setTitle("标题");
     int _jspx_eval_display_005fcolumn_005f6 = _jspx_th_display_005fcolumn_005f6.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -988,7 +989,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f6);
-    // /pages/manage/imageText_add.jsp(317,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(318,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${res.resourceTittle}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1007,9 +1008,9 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f7 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle_005fsortable.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f7.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f1);
-    // /pages/manage/imageText_add.jsp(319,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(320,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f7.setTitle("更新时间");
-    // /pages/manage/imageText_add.jsp(319,4) name = sortable type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(320,4) name = sortable type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f7.setSortable("true");
     int _jspx_eval_display_005fcolumn_005f7 = _jspx_th_display_005fcolumn_005f7.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1049,7 +1050,7 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f7);
-    // /pages/manage/imageText_add.jsp(320,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(321,5) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${res.createDate} ${res.createTime}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1068,11 +1069,11 @@ public final class imageText_005fadd_jsp extends org.apache.jasper.runtime.HttpJ
     net.fckeditor.tags.EditorTag _jspx_th_FCK_005feditor_005f0 = (net.fckeditor.tags.EditorTag) _005fjspx_005ftagPool_005fFCK_005feditor_0026_005fvalue_005finstanceName_005fbasePath_005fnobody.get(net.fckeditor.tags.EditorTag.class);
     _jspx_th_FCK_005feditor_005f0.setPageContext(_jspx_page_context);
     _jspx_th_FCK_005feditor_005f0.setParent(null);
-    // /pages/manage/imageText_add.jsp(347,32) name = instanceName type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(348,32) name = instanceName type = java.lang.String reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_FCK_005feditor_005f0.setInstanceName("content");
-    // /pages/manage/imageText_add.jsp(347,32) name = value type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(348,32) name = value type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_FCK_005feditor_005f0.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${content}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-    // /pages/manage/imageText_add.jsp(347,32) name = basePath type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/imageText_add.jsp(348,32) name = basePath type = java.lang.String reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_FCK_005feditor_005f0.setBasePath("/fckeditor");
     int _jspx_eval_FCK_005feditor_005f0 = _jspx_th_FCK_005feditor_005f0.doStartTag();
     if (_jspx_th_FCK_005feditor_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

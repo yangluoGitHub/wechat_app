@@ -252,6 +252,7 @@ function checkForm() {
 		multiImageTextInfo += id+"|";
 	});
 	multiImageTextInfo = multiImageTextInfo.substring(0, multiImageTextInfo.length-1);
+	alert(multiImageTextInfo);
 	j$("#multiImageTextInfo").val(multiImageTextInfo);
 	form1.submit();
 	return true;

@@ -9,7 +9,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.weili.wechat.common.RetInfo;
-import com.weili.wechat.common.StatusEnum.MediaType;
 import com.weili.wechat.common.StringUtil;
 import com.weili.wechat.dao.CommonData;
 import com.weili.wechat.hibernate.WechatArticle;
@@ -17,6 +16,7 @@ import com.weili.wechat.hibernate.WechatMedia;
 import com.weili.wechat.hibernate.WechatResource;
 import com.weili.wechat.service.manage.ImageTextService;
 import com.weili.wechat.vo.ImageTextDetail;
+import com.weili.wechatCom.message.resp.Article;
 
 public class ImageTextServiceImpl extends RetInfo implements ImageTextService  {
 	
@@ -51,7 +51,11 @@ public class ImageTextServiceImpl extends RetInfo implements ImageTextService  {
 			hql.append("and createDate <= '" + endDate + "' ");
 		}
 		if (!"".equals(OtherConditions)) {
-			hql.append("and " + OtherConditions + " ");
+			if("multiresourceId is null".equals(OtherConditions)){
+				hql.append("and (multiresourceId='' or "+OtherConditions+") ");
+			}else{
+				hql.append("and " + OtherConditions + " ");
+			}
 		}
 		hql.append("order by createDate desc, createTime desc ");
 
@@ -122,6 +126,13 @@ public class ImageTextServiceImpl extends RetInfo implements ImageTextService  {
 				commonData.updateObject(r);
 			}
 		}
+		// 删除wechat_article 中业务关联信息
+		
+		String HQL ="from WechatArticle w where w.id='"+id+"' or w.id like '"+id+"%'";
+		List<WechatArticle> list1 = commonData.getAllResult(HQL);
+		for(WechatArticle wechatArticle : list1){
+			commonData.deleteObject(wechatArticle);
+		}
 		
 		this.setRetMsg("删除图文信息成功");
 		this.setRetOK();
@@ -163,5 +174,42 @@ public class ImageTextServiceImpl extends RetInfo implements ImageTextService  {
 		wechatArticle = (WechatArticle) commonData.retrieveObject(WechatArticle.class,id);
 		return wechatArticle;
 	}
+	
+	public List<WechatArticle> qryArticleSByFunctionName(String functionName){
+		String HQL ="from WechatArticle w where w.function='"+functionName+"'";
+		List<WechatArticle> list = commonData.getAllResult(HQL);
+		return list;
+	}
+
+	@Override
+	public Map<String, Object> clickMenuResponse(String eventKey) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+//	private List<Article> transport(List<WechatArticle> list){
+//		
+//		Map<String, WechatArticle> map = new HashMap<String, WechatArticle>();
+//		String key = null;
+//		for(WechatArticle w : list){
+//		
+//			key = w.getType().equals("title") ? "-1" : w.getId().split("\\|")[1];
+//			map.put(key, w);
+//		}
+//		Article art = null;
+//		for(int i = -1; i< list.size(); i++){
+//			WechatArticle wa = map.get(""+i);
+//			art = new Article();
+//			art.setTitle(wa.getArticleTitle());
+//		}
+//		
+//	}
+//	public Map<String, Object> clickMenuResponse(String eventKey){
+//		
+//		//完善的 可能有一套完整的检索流程
+//		//目前默认'click'响应图文信息 无图文信息时相应 文字回复
+//		List<Article> list = transport(qryArticleSByFunctionName(eventKey));
+//		
+//	}
 	
 }
