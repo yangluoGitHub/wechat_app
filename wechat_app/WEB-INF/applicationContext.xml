@@ -36,8 +36,9 @@
 				 			execution(* com.weili.wechat.service.*.*.mod*(..)) ||
 				 			execution(* com.weili.wechat.service.*.*.refuse*(..)) ||
 				 			execution(* com.weili.wechat.service.*.*.reset*(..)) ||
-				 			execution(* com.weili.wechat.service.*.*.update*(..))
-				 			execution(* com.weili.wechat.service.*.*.save*(..)) 
+				 			execution(* com.weili.wechat.service.*.*.update*(..)) ||
+				 			execution(* com.weili.wechat.service.*.*.save*(..)) ||
+				 			execution(* com.weili.wechat.service.*.*.register*(..))
 			" />
 
 		<aop:after-returning method="afterReturning"
@@ -59,6 +60,7 @@
 			<tx:method name="save*" />
 			<tx:method name="send*" />
 			<tx:method name="service" />
+			<tx:method name="register" />
 		</tx:attributes>
 	</tx:advice>
 
@@ -174,6 +176,13 @@
 	
 	<bean id="messageService"
 		class="com.weili.wechat.service.manage.impl.MessageServiceImpl">
+		<property name="commonData">
+			<ref bean="commonData" />
+		</property>
+	</bean>	
+	
+	<bean id="registerService"
+		class="com.weili.wechat.service.system.impl.RegisterServiceImpl">
 		<property name="commonData">
 			<ref bean="commonData" />
 		</property>

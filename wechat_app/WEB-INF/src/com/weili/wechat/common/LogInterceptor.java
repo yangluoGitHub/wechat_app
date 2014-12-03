@@ -205,7 +205,8 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 				!module.equals("devresponsor.do")&&
 				!module.equals("notifymodel.do")&&
 				!module.equals("projecttype.do")&&
-				!module.equals("staticPages.do")				
+				!module.equals("staticPages.do")&&
+				!module.equals("register.do")				
 				){
 			if(operate.indexOf("add")>=0 ||
 					operate.indexOf("mod")>=0 ||
@@ -213,7 +214,8 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 					operate.indexOf("save")>=0 ||
 					operate.indexOf("update")>=0 ||
 					operate.indexOf("Create")>=0 ||
-					operate.indexOf("Process")>=0){
+					operate.indexOf("Process")>=0 ||
+					operate.indexOf("register")>=0){
 				if(mv.getModelMap().get("message")==null){
 					this.getLogAuditService().writeLog(logAudit);
 				}else{

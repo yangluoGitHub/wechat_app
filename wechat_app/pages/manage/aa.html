@@ -1,0 +1,264 @@
+<body>
+	<div id="page" class="page">
+
+		<div id="header" class="header">
+			<a href="/" class="logo">百度旅游预测</a>
+			<div class="products-list">
+				<div class="products-wrapper">
+					<a href="/trip" class="products-link">旅游预测</a>
+				</div>
+			</div>
+			<ul class="site-nav">
+				<li><a href="/trip/index?type=china-city"
+					data-type="china-city">国内城市旅游</a></li>
+				<li class="selected"><a href="/tour/index"
+					data-type="china-city">国内旅游景点</a></li>
+				<li><a href="/trip/index?type=world-country"
+					data-type="china-city">出国旅游</a></li>
+			</ul>
+			<div class="contact">
+				<a class="feedback" href="javascript:void(0);"
+					onclick="_hmt.push(['_trackEvent', '页头', '点击用户反馈']);">用户反馈</a>|<a
+					class="cooperation" href="javascript:void(0);"
+					onclick="_hmt.push(['_trackEvent', '头部', '点击景点合作']);">景点合作</a>|<a
+					class="about" href="javascript:void(0);"
+					onclick="_hmt.push(['_trackEvent', '头部', '点击关于旅游']);">关于百度旅游预测</a>
+			</div>
+		</div>
+
+		<div class="wrapper">
+
+			<div id="map-container" class="map"></div>
+			<a class="back-to"
+				onclick="_hmt.push(['_trackEvent', '地图', '返回全国']);">
+				<div>返回全国地图</div> </a>
+			<div id="allmap" class="map"></div>
+			<div class="time-bar">
+				<div class="time-bar-mask"></div>
+				<ul class="time-list"></ul>
+			</div>
+
+
+			<div class="side" id="side">
+				<a class="side-toggle" href="javascript: void(0);"
+					onclick="_hmt.push(['_trackEvent', '右侧', '展开/收起右侧']);"></a>
+				<div class="side-mask"></div>
+				<div class="side-container">
+
+					<div class="filter">
+						<div class="combo-box search">
+							<a class="combo-box-trigger" href="javascript: void(0);"
+								onclick="_hmt.push(['_trackEvent', '右侧', '展开/收起搜索']);"> <span
+								class="combo-box-text search-text">北京</span> <i
+								class="drop-icon"></i> </a>
+						</div>
+						<div class="combo-box order">
+							<a class="combo-box-trigger" href="javascript: void(0);"
+								onclick="_hmt.push(['_trackEvent', '右侧', '展开/收起排序']);"> <span
+								class="combo-box-text order-text">百度拥挤指数从高到低</span> <i
+								class="drop-icon"></i> </a>
+						</div>
+					</div>
+					<div class="search-container">
+						<div class="search-box">
+							<input type="search" class="search-input" maxlength="15"
+								placeholder="输入景点或省份/直辖市名称" value="输入景点或省份/直辖市名称" /> <a
+								class="search-close" href="javascript: void(0);"
+								onclick="_hmt.push(['_trackEvent', '搜索', '清除搜索词']);"></a>
+						</div>
+						<div class="search-scroll">
+							<div class="search-result"></div>
+						</div>
+					</div>
+					<div class="list-scroll scroll">
+						<ul id="list" class="list"></ul>
+					</div>
+					<div class="bdsharebuttonbox">
+						<span class="label">分享到：</span> <a href="#" class="baidu"
+							title="分享到百度贴吧" data-cmd="tieba"
+							onclick="_hmt.push(['_trackEvent', '分享', '分享到百度贴吧']);"></a> <a
+							href="#" class="weibo" data-cmd="tsina" title="分享到新浪微博"
+							onclick="_hmt.push(['_trackEvent', '分享', '分享到新浪微博']);"></a> <a
+							href="#" class="weixin" data-cmd="weixin" title="分享到微信"
+							onclick="_hmt.push(['_trackEvent', '分享', '分享到微信']);"></a> <a
+							href="#" class="qzone" data-cmd="qzone" title="分享到QQ空间"
+							onclick="_hmt.push(['_trackEvent', '分享', '分享到QQ空间']);"></a> <a
+							href="#" class="plus" data-cmd="more"
+							onclick="_hmt.push(['_trackEvent', '分享', '点击更多']);"></a>
+					</div>
+
+					<script>
+						window._bd_share_config = {
+							"common" : {
+								"bdSnsKey" : {},
+								"bdText" : "想知道未来几天，全国重点景区哪些拥堵哪些舒适？查看百度旅游预测吧",
+								"bdMini" : "2",
+								"bdMiniList" : false,
+								"bdPic" : "http:\/\/sfile.baidu.com\/travel\/share.jpg",
+								"bdStyle" : "0",
+								"bdSize" : "32"
+							},
+							"share" : {}
+						};
+						with (document)
+							0[(getElementsByTagName('head')[0] || body)
+									.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='
+									+ ~(-new Date() / 36e5)];
+					</script>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/html" id="search-combo-box">
+    <div class="area-list-container"></div>
+</script>
+	<script type="text/html" id="tip-info-tpl">
+    <div class="front">
+        <div class="arrow"></div>
+        <div class="close" onclick="_hmt.push(['_trackEvent', '景点信息Tip', '关闭']);"></div>
+        <div class="hd">
+            <span class="name"></span>
+        </div>
+        <div class="detail">
+            <div class="heat-data-section" id="heat-data-section">
+            </div>
+            <div class="weather-data-section" id="weather-data-section">
+            </div>
+        </div>
+        <div id="view-data-section"></div>
+    </div>
+    <div class="back">
+        <div class="arrow"></div>
+        <div class="close" onclick="_hmt.push(['_trackEvent', '景点信息Tip', '关闭']);"></div>
+        <div class="hd">
+            <span class="name"></span>
+        </div>
+        <div class="trend bd">
+            <ul class="trend-chart-lines">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div id="trend-chart" class="trend-chart"></div>
+            <div class="trend-chart-date" id="trend-chart-date">
+                <span class="chart-date-right">2.33</span>
+                <span class="chart-date-left">1.11</span>
+                <span class="chart-date-center">1.22</span>
+            </div>
+            <div class="trend-chart-legend">
+                <span><i class="i-real"></i>实际游览人数</span>
+                <span><i class="i-predict"></i>预测人数</span>
+                <span><i class="i-today"></i>今天</span>
+            </div>
+        </div>
+        <div>
+            <a class="view-overview" href="javascript:void(0)" 
+                onclick="_hmt.push(['_trackEvent', '景点信息Tip', '返回景点概况']);">
+                &lt;&nbsp;&nbsp;返回景点概况
+            </a>
+        </div>
+    </div>
+</script>
+	<script type="text/html" id="legend">
+    <div class="legend">
+        <span class="title">拥挤指数：</span>
+        <span class="heat-1">非常舒适：1</span>
+        <span class="heat-2">舒适：2</span>
+        <span class="heat-3">一般：3</span>
+        <span class="heat-4">拥挤：4</span>
+        <span class="heat-5">非常拥挤：5</span>
+        <div class="map-logo ie6-png"></div>
+    </div>
+</script>
+	<script type="text/html" id="zoom-control">
+    <div class="zoom">
+        <div class="zoom-bar">
+            <div class="zoom-bar-active"></div>
+        </div>
+        <div class="zoom-control zoom-out" 
+            onclick="_hmt.push(['_trackEvent', '地图', '点击缩小']);">-</div>
+        <div class="zoom-control zoom-in" 
+            onclick="_hmt.push(['_trackEvent', '地图', '点击放大']);">+</div>
+        <div class="zoom-grab-container">
+            <div class="zoom-grab">
+                <ul class="zoom-grab-icon"><li></li><li></li><li></li></ul>
+            </div>
+        </div>
+    </div>
+</script>
+	<script type="text/html" id="about">
+    <div class="about-dialog">
+        <div class="about-explain">
+            <p>每一天，全中国都有数以百万的互联网用户在利用百度搜索各种旅游相关信息。
+                我们发现，旅游的相关搜索数量随着季节和假节日的时间呈现周期性的上涨和下浮。
+                百度大数据部通过对搜索数据的深度挖掘，已经发现旅游相关词搜索数量和实际旅游
+                人数之间的密切关系，并依此建立了旅游预测模型。通过和北京市旅游委的景点实际
+                人数对比，准确度达到90%以上，可以充分反映各旅游景点未来的人流趋势。
+            </p>
+            <p class="about-image">
+                <img src="/static/trends_travel/widget/template/about_72a8893.jpg" style="width:699px;height:347px;" alt="关于旅游预测" />
+            </p>
+            <p>上图展示了百度大数据部故宫旅游人数预测值和北京市旅游委提供的故宫当日实际人数的对比。
+                通过对比，可以看出基于百度大数据预测的故宫旅游人数和当日实际人数的涨幅趋势基本一致。
+            </p>
+            <p>旅游预测是百度将大数据信息带入人民日常生活的众多产品中的一个。以此为出发点，
+                百度将继续致力于把大数据背后的信息展示给每一位用户，让普通民众也享受到大数据时代
+                的信息福利。
+            </p>
+        </div>
+    </div>
+</script>
+	<script type="text/html" id="feedback">
+    <form class="feedback-dialog dialog-form">
+        <div class="form-line">
+            <label class="form-label" for="feedback-content">反馈内容</label>
+            <textarea id="feedback-content" name="content" class="form-text" 
+                placeholder="欢迎提出您在使用中遇到的问题或宝贵建议，感谢您对旅游预测的支持。" 
+                maxlength="1000" required="required" />
+        </div>
+        <div class="form-line">
+            <label class="form-label" for="feedback-contact">联系方式</label>
+            <input type="text" id="feedback-contact" name="contact" class="form-text" 
+                placeholder="比如您的QQ/邮箱/电话，便于我们及时回复您。" maxlength="100" />
+        </div>
+        <input type="hidden" name="product" value="旅游预测（景点）" />
+    </form>
+</script>
+	<script type="text/html" id="cooperation">
+    <form class="cooperation-dialog dialog-form">
+        <div class="form-line">
+            <label class="form-label" for="cooperation-name">景点名称</label>
+            <input type="text" id="cooperation-name" name="name" class="form-text" 
+                placeholder="如颐和园" maxlength="100" required="required" />
+        </div>
+        <div class="form-line">
+            <label class="form-label" for="cooperation-people">联系人</label>
+            <input type="text" id="cooperation-people" name="people" class="form-text" 
+                placeholder="怎么称呼" maxlength="100" required="required" />
+        </div>
+        <div class="form-line">
+            <label class="form-label" for="cooperation-contact">联系方式</label>
+            <input type="text" id="cooperation-contact" name="contact" class="form-text" 
+                placeholder="比如您的QQ/邮箱/电话，便于我们及时回复您。" 
+                maxlength="100" required="required" />
+        </div>
+        <div class="form-line">
+            <label class="form-label" for="cooperation-content">合作需求</label>
+            <textarea id="cooperation-content" name="content" class="form-text" 
+                placeholder="请留下您希望合作的方式和内容，我们会主动与您联系。" 
+                maxlength="1000" required="required" />
+        </div>
+    </form>
+</script>
+	<!--[if IE 6]>
+<![endif]-->
+
+	<!--[if IE 6]>
+<![endif]-->
+</body>

@@ -16,9 +16,11 @@
 		<property name="prefix">
 			<value>/pages/</value>
 		</property>
+		<!-- 
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
+		 -->
 	</bean>
 	
 	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
@@ -72,7 +74,6 @@
 			<props>
                 <!--login-->
 			    <prop key="*/login.do">loginController</prop>
-			    
 			    <!--system-->
 			    <prop key="*/user.do">userController</prop>
 			    <prop key="*/role.do">roleController</prop>
@@ -92,6 +93,8 @@
                 <prop key="*/imageText.do">imageTextController</prop>
 				<!-- 消息管理 -->
 				<prop key="*/message.do">messageController</prop>
+				<!-- 注册管理 -->
+				<prop key="*/register.do">registerController</prop>
 			</props>
 		</property>
 	</bean>
@@ -104,6 +107,7 @@
 		<property name="loginService" ref ="loginService"/>
 		<property name="userService" ref ="userService"/>
 		<property name="sysRoleService" ref ="sysRoleService"/>
+		<property name="registerService" ref ="registerService"/>
 	</bean>
 	
 	
@@ -191,5 +195,11 @@
     		<ref local="methodNameResolver"/>
     	</property>
     	<property name="messageService" ref ="messageService"/>
+ 	</bean>
+ 	<bean id="registerController" class="com.weili.wechat.web.system.RegisterController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="registerService" ref ="registerService"/>
  	</bean>
 </beans>

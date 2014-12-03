@@ -3,6 +3,7 @@ package com.weili.wechat.service.login;
 import java.util.List;
 
 import com.weili.wechat.common.IRetInfo;
+import com.weili.wechat.vo.MOpTableVO;
 import com.weili.wechat.vo.User;
 
 /**
@@ -19,7 +20,6 @@ public interface LoginService extends IRetInfo
     * @roseuid 47CFB97E0196
     */
    public User checkLogin(String userId, String passwd);
-   
    /**
     * @param roleId
     * @return List

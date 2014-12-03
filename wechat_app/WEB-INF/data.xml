@@ -91,6 +91,7 @@
 			<!-- 业务功能 -->
 			<!-- 图文消息表 -->
 			<value>com/weili/wechat/hibernate/WechatArticle.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/MOpTable.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

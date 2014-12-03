@@ -56,9 +56,11 @@ public class WeMenuController extends MultiActionController{
 			params.put("wechatId", id);
 			
 			List retList = this.weMenuService.qry(params);
-			return new ModelAndView("manage/wechatMenu_set")
-					.addObject("retList", retList)
-			        .addObject("wechatId", id);
+//			return new ModelAndView("manage/wechatMenu_set")
+//					.addObject("retList", retList)
+//			        .addObject("wechatId", id);
+			return new ModelAndView("manage/baiduMapTest");
+			
 		} catch (Exception e) {
 			log.error("查询异常:"+e.getMessage());
 			return new ModelAndView("info","message","查询异常！");

@@ -22,6 +22,11 @@ public class TimeoutInterceptor extends HandlerInterceptorAdapter {
 		String uri = request.getRequestURI();
 		String sid_session = request.getSession().getId();
 		String sid_url = request.getParameter("sid");
+		
+		
+		if(uri.endsWith("register.do")){
+			return true;
+		}
 		if(uri.endsWith("login.do")){
 			if(sid_url!=null&&sid_url!=""){
 				if (request.getSession().getAttribute("userSession") == null){

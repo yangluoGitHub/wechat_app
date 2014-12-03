@@ -2,6 +2,7 @@ package com.weili.wechat.service.login.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,7 +15,9 @@ import com.weili.wechat.dao.CommonData;
 import com.weili.wechat.dao.system.ButtonDAO;
 import com.weili.wechat.dao.system.MenuDAO;
 import com.weili.wechat.dao.system.UserDAO;
+import com.weili.wechat.hibernate.MOpTable;
 import com.weili.wechat.service.login.LoginService;
+import com.weili.wechat.vo.MOpTableVO;
 import com.weili.wechat.vo.User;
 
 public class LoginServiceImpl extends RetInfo implements LoginService {
@@ -56,7 +59,6 @@ public class LoginServiceImpl extends RetInfo implements LoginService {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
-
 
 
 
