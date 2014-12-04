@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.weili.wechat.common.HttpClientTools;
 import com.weili.wechatCom.service.CoreService;
 import com.weili.wechatCom.util.SignUtil;
 
@@ -19,28 +20,55 @@ import com.weili.wechatCom.util.SignUtil;
  */
 public class html5Servlet extends HttpServlet {
 	private static final long serialVersionUID = 4440739483644821986L;
+	private HttpClientTools httpClientTools = null;
+	
+	public HttpClientTools getHttpClientTools() {
+		return httpClientTools;
+	}
 
+	public void setHttpClientTools(HttpClientTools httpClientTools) {
+		this.httpClientTools = httpClientTools;
+	}
 	/**
 	 * 请求校验（确认请求来自微信服务器）
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 微信加密签名
-		String signature = request.getParameter("signature");
-		// 时间戳
-		String timestamp = request.getParameter("timestamp");
-		// 随机数
-		String nonce = request.getParameter("nonce");
-		// 随机字符串
-		String echostr = request.getParameter("echostr");
-
-		PrintWriter out = response.getWriter();
-		// 请求校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
-		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
-			out.print(echostr);
-		}
-		out.close();
-		out = null;
-	}
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			   throws ServletException, IOException {
+			  // TODO Auto-generated method stub
+		        String code = request.getParameter("code");
+		        System.out.print("code==" + code);
+		        request.setAttribute("code", code);
+		        
+		        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9f85f73e85765db&secret=e3a29aaee0558faf27d026b188143a59&code="+code+"&grant_type=authorization_code";
+		        String jsonStr = httpClientTools.doGet(requestUrl);
+		        request.setAttribute("jsonStr", jsonStr);
+		        
+		        /*
+		         * 解析openId, select from M_OP_table 判断是否已经注册过 如果已经注册过 直接自动登录
+		         * 如果没有此openId 跳转到注册页面， 注册成功后在跳转到登录界面。
+		         */
+		        
+			  // 跳转到index.jsp
+				 request.getRequestDispatcher("index1.jsp").forward(request, response);
+			 }
+//	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// 微信加密签名
+//		String signature = request.getParameter("signature");
+//		// 时间戳
+//		String timestamp = request.getParameter("timestamp");
+//		// 随机数
+//		String nonce = request.getParameter("nonce");
+//		// 随机字符串
+//		String echostr = request.getParameter("echostr");
+//
+//		PrintWriter out = response.getWriter();
+//		// 请求校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
+//		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
+//			out.print(echostr);
+//		}
+//		out.close();
+//		out = null;
+//	}
 
 	/**
 	 * 请求校验与处理
