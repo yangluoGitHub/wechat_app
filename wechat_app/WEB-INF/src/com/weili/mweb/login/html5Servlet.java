@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.weili.wechat.common.HttpClientTools;
 import com.weili.wechatCom.service.CoreService;
 import com.weili.wechatCom.util.SignUtil;
@@ -21,6 +24,7 @@ import com.weili.wechatCom.util.SignUtil;
 public class html5Servlet extends HttpServlet {
 	private static final long serialVersionUID = 4440739483644821986L;
 	private HttpClientTools httpClientTools = null;
+	private static Log log = LogFactory.getLog(html5Servlet.class);
 	
 	public HttpClientTools getHttpClientTools() {
 		return httpClientTools;
@@ -37,11 +41,14 @@ public class html5Servlet extends HttpServlet {
 			  // TODO Auto-generated method stub
 		        String code = request.getParameter("code");
 		        System.out.print("code==" + code);
+		        log.info("20141205code==" + code);
 		        request.setAttribute("code", code);
 		        
 		        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9f85f73e85765db&secret=e3a29aaee0558faf27d026b188143a59&code="+code+"&grant_type=authorization_code";
+		        log.info("20141205requestUrl==" + requestUrl);
 		        String jsonStr = httpClientTools.doGet(requestUrl);
 		        request.setAttribute("jsonStr", jsonStr);
+		        log.info("20141205jsonStr==" + jsonStr);
 		        
 		        /*
 		         * 解析openId, select from M_OP_table 判断是否已经注册过 如果已经注册过 直接自动登录
