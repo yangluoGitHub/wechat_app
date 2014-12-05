@@ -14,10 +14,12 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.weili.wechat.business.share.Translate;
 import com.weili.wechat.common.CalendarUtil;
 import com.weili.wechat.common.GetResource;
 import com.weili.wechat.common.Resource;
 import com.weili.wechat.common.StringUtil;
+import com.weili.wechat.common.Tool;
 import com.weili.wechat.common.UserSession;
 import com.weili.wechat.service.login.LoginService;
 import com.weili.wechat.service.system.RegisterService;
@@ -25,7 +27,6 @@ import com.weili.wechat.service.system.SysRoleService;
 import com.weili.wechat.service.system.UserService;
 import com.weili.wechat.vo.Button;
 import com.weili.wechat.vo.LogAudit;
-import com.weili.wechat.vo.MOpTableVO;
 import com.weili.wechat.vo.Menu;
 import com.weili.wechat.vo.Role;
 import com.weili.wechat.vo.User;
@@ -108,151 +109,133 @@ public class LoginController extends MultiActionController {
 	 * @throws Exception
 	 */
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		ModelAndView mv = new ModelAndView("login");
-//		Translate translate = new Translate();
-//		Locale lang;
-//		String s = (String) request.getParameter("language");
-//		if (s.equals("tw")) {
-//			translate.setlanguage(2);
-//			lang = Locale.TRADITIONAL_CHINESE;
-//		} else if (s.equals("en")) {
-//			translate.setlanguage(3);
-//			lang = Locale.US;
-//		} else {
-//			translate.setlanguage(1);
-//			lang = Locale.CHINA;
-//		}
-//		request.getSession().invalidate();
-//		request.getSession().setAttribute("locale", lang.toString());
-//
-//		Resource resource = (Resource) GetResource.getOneResource(request.getSession().getServletContext(),
-//				request.getSession().getAttribute("locale").toString());
-//
-//		try {
-//			if(isSysBusy()) {
-//				return mv.addObject("message", resource.srcStr("src.SysBusy"));
-//			}
-//			
-//			String no = request.getParameter("account");
-//			String passwd = request.getParameter("password");
-//
-//			User aUser = this.getLoginService().checkLogin(no, passwd);
-//			log.info("返回码=[" + this.getLoginService().getRetCode() + "] 返回信息=[" + resource.srcStr(this.getLoginService().getRetMsg()) + "]");
-//			if (this.getLoginService().getRetCode() != 0) {
-//				String retMsg = this.getLoginService().getRetMsg();
-//				String message = resource.srcStr(retMsg);
-//				if (retMsg.indexOf('|') != -1) {
-//					String retMsgs[] = retMsg.split("\\|");
-//					message = "";
-//					for (int i = 0; i < retMsgs.length; i++) {
-//						log.debug("retMsgs[" + i + "]==" + retMsgs[i] + "resource.srcStr(retMsgs[" + i + "])" + resource.srcStr(retMsgs[i]));
-//						message += resource.srcStr(retMsgs[i]);
-//					}
-//				}
-//				return mv.addObject("message", message);
-//			} else {
-//				List menuList = new ArrayList();
-//				if (aUser.getRole().getNo() < 90000) {
-//					menuList = this.getLoginService().qryMenuByRole(aUser.getRole().getNo());
-//				} else {
-//					String[] notes = this.getSysRoleService().getRoleById(String.valueOf(aUser.getRole().getNo())).getNote().split("\\|");
-//					for (String note : notes) {
-//						menuList.addAll(this.getLoginService().qryMenuByRole(Integer.parseInt(note)));
-//					}
-//					for (int i = 0; i < menuList.size() - 1; i++) {
-//						for (int j = i + 1; j < menuList.size(); j++) {
-//							if (((Menu) menuList.get(i)).getNo().equals(((Menu) menuList.get(j)).getNo())) {
-//								menuList.remove(j);
-//								j--;
-//							}
-//						}
-//					}
-//				}
-//
-//				if (menuList.size() == 0) {
-//					return mv.addObject("message", resource.srcStr("src.userNotLogin"));
-//				}
-//				UserSession aUserSession = new UserSession();
-//				aUserSession.setAccount(aUser.getNo());
-//				aUserSession.setName(aUser.getName());
-//				aUserSession.setLoginIp(aUser.getLoginIp() == null ? "" : aUser.getLoginIp());
-//				aUserSession.setLoginTime(aUser.getLoginTime() == null ? "" : aUser.getLoginTime());
-//				
-//
-//				
-//				aUserSession.setRoleNo(aUser.getRole().getNo());
-//				aUserSession.setRoleName(aUser.getRole().getName());
-//				aUserSession.setRoleCatalog(aUser.getRole().getCatalog());
-//				aUserSession.setMenuList(menuList);
-//				aUserSession.setOnline_flag(aUser.getOnline_flag());
-//
-//				aUserSession.setLoginIp_curr(request.getRemoteAddr());
-//				aUserSession.setLoginTime_curr(Tool.getSysTimeYMDHMS());
-//				
-//				aUserSession.setWechatId(aUser.getWechatId());
-//				
-//				request.getSession().setAttribute("Available", true);
-//				request.getSession().setAttribute("IP_Available", request.getRemoteAddr());
-//				request.getSession().setAttribute("Time_Available", Tool.getSysTimeYMDHMS());
-//				request.getSession().setAttribute("userSession", aUserSession);
-//				SessionController.addSession(request, response);// 用户登陆，初始化userSession后，添加session记录。
-//
-//				Integer[] roleNo = new Integer[3];
-//				// 如果用户角色编号大于90000?
-//				if (aUser.getRole().getNo() < 90000) {
-//					roleNo[0] = aUser.getRole().getNo();
-//				} else {
-//					String[] notes = this.getSysRoleService().getRoleById(String.valueOf(aUser.getRole().getNo())).getNote().split("\\|");
-//					for (int i = 0; i < notes.length; i++) {
-//						roleNo[i] = Integer.parseInt(notes[i]);
-//					}
-//				}
-//
-//				init(request, roleNo, no);
-//
-//				aUser.setLoginTime(Tool.getSysTimeYMDHMS());
-//				String loginIp = request.getRemoteAddr();
-//				aUser.setLoginIp(loginIp);
-//				this.getUserService().modUser(aUser);
-//				this.getLoginService().loginLog();
-//
-//				request.getSession().setAttribute("sysDate", CalendarUtil.getSysTimeYMD());
-//
-//				// 第一次登录强制修改密码
-//				if (aUser.getOnline_flag().intValue() == -1) {
-//					return new ModelAndView("login_first").addObject("flag","1");
-//				} else {
-//					if (this.getLoginService().checkLoginUpdateDate(no) == -1) {
-//						return new ModelAndView("login_success").addObject("passtxDate",this.getLoginService().passwdFlarmDay(no));
-//					} else { //密码过期
-//						return new ModelAndView("login_first").addObject("flag", "0");
-//					}
-//				}
-//			}
-//			
-//		} catch (Exception e) {
-//			log.error("Error in LoginController.login: " + e.getClass() + ":" , e);
-//			return mv.addObject("message", "登录异常!");
-//		}
-		try {
-			String mobile = StringUtil.parseString(request.getParameter("uid"));              //手机号
-			String passwd = StringUtil.parseString(request.getParameter("psw1"));                  //密码
-			                    //创建者  
-			
-			MOpTableVO vo = new MOpTableVO();
-			vo.setMobile(mobile);
-			vo.setPasswd(passwd);
-			
-			try {
-				this.getRegisterService().register(vo);
-				return new ModelAndView("info","message","注册成功");
-			} catch (Exception e) {
-				  return new ModelAndView("info","message","注册失败");
-			}
-		} catch (Exception e) {
-			log.error("注册异常："+ e.getMessage());
-			 return new ModelAndView("info", "message", "注册异常!");
+		ModelAndView mv = new ModelAndView("login");
+		Translate translate = new Translate();
+		Locale lang;
+		String s = (String) request.getParameter("language");
+		if (s.equals("tw")) {
+			translate.setlanguage(2);
+			lang = Locale.TRADITIONAL_CHINESE;
+		} else if (s.equals("en")) {
+			translate.setlanguage(3);
+			lang = Locale.US;
+		} else {
+			translate.setlanguage(1);
+			lang = Locale.CHINA;
 		}
+		request.getSession().invalidate();
+		request.getSession().setAttribute("locale", lang.toString());
+
+		Resource resource = (Resource) GetResource.getOneResource(request.getSession().getServletContext(),
+				request.getSession().getAttribute("locale").toString());
+
+		try {
+			if(isSysBusy()) {
+				return mv.addObject("message", resource.srcStr("src.SysBusy"));
+			}
+			
+			String no = request.getParameter("account");
+			String passwd = request.getParameter("password");
+
+			User aUser = this.getLoginService().checkLogin(no, passwd);
+			log.info("返回码=[" + this.getLoginService().getRetCode() + "] 返回信息=[" + resource.srcStr(this.getLoginService().getRetMsg()) + "]");
+			if (this.getLoginService().getRetCode() != 0) {
+				String retMsg = this.getLoginService().getRetMsg();
+				String message = resource.srcStr(retMsg);
+				if (retMsg.indexOf('|') != -1) {
+					String retMsgs[] = retMsg.split("\\|");
+					message = "";
+					for (int i = 0; i < retMsgs.length; i++) {
+						log.debug("retMsgs[" + i + "]==" + retMsgs[i] + "resource.srcStr(retMsgs[" + i + "])" + resource.srcStr(retMsgs[i]));
+						message += resource.srcStr(retMsgs[i]);
+					}
+				}
+				return mv.addObject("message", message);
+			} else {
+				List menuList = new ArrayList();
+				if (aUser.getRole().getNo() < 90000) {
+					menuList = this.getLoginService().qryMenuByRole(aUser.getRole().getNo());
+				} else {
+					String[] notes = this.getSysRoleService().getRoleById(String.valueOf(aUser.getRole().getNo())).getNote().split("\\|");
+					for (String note : notes) {
+						menuList.addAll(this.getLoginService().qryMenuByRole(Integer.parseInt(note)));
+					}
+					for (int i = 0; i < menuList.size() - 1; i++) {
+						for (int j = i + 1; j < menuList.size(); j++) {
+							if (((Menu) menuList.get(i)).getNo().equals(((Menu) menuList.get(j)).getNo())) {
+								menuList.remove(j);
+								j--;
+							}
+						}
+					}
+				}
+
+				if (menuList.size() == 0) {
+					return mv.addObject("message", resource.srcStr("src.userNotLogin"));
+				}
+				UserSession aUserSession = new UserSession();
+				aUserSession.setAccount(aUser.getNo());
+				aUserSession.setName(aUser.getName());
+				aUserSession.setLoginIp(aUser.getLoginIp() == null ? "" : aUser.getLoginIp());
+				aUserSession.setLoginTime(aUser.getLoginTime() == null ? "" : aUser.getLoginTime());
+				
+
+				
+				aUserSession.setRoleNo(aUser.getRole().getNo());
+				aUserSession.setRoleName(aUser.getRole().getName());
+				aUserSession.setRoleCatalog(aUser.getRole().getCatalog());
+				aUserSession.setMenuList(menuList);
+				aUserSession.setOnline_flag(aUser.getOnline_flag());
+
+				aUserSession.setLoginIp_curr(request.getRemoteAddr());
+				aUserSession.setLoginTime_curr(Tool.getSysTimeYMDHMS());
+				
+				aUserSession.setWechatId(aUser.getWechatId());
+				
+				request.getSession().setAttribute("Available", true);
+				request.getSession().setAttribute("IP_Available", request.getRemoteAddr());
+				request.getSession().setAttribute("Time_Available", Tool.getSysTimeYMDHMS());
+				request.getSession().setAttribute("userSession", aUserSession);
+				SessionController.addSession(request, response);// 用户登陆，初始化userSession后，添加session记录。
+
+				Integer[] roleNo = new Integer[3];
+				// 如果用户角色编号大于90000?
+				if (aUser.getRole().getNo() < 90000) {
+					roleNo[0] = aUser.getRole().getNo();
+				} else {
+					String[] notes = this.getSysRoleService().getRoleById(String.valueOf(aUser.getRole().getNo())).getNote().split("\\|");
+					for (int i = 0; i < notes.length; i++) {
+						roleNo[i] = Integer.parseInt(notes[i]);
+					}
+				}
+
+				init(request, roleNo, no);
+
+				aUser.setLoginTime(Tool.getSysTimeYMDHMS());
+				String loginIp = request.getRemoteAddr();
+				aUser.setLoginIp(loginIp);
+				this.getUserService().modUser(aUser);
+				this.getLoginService().loginLog();
+
+				request.getSession().setAttribute("sysDate", CalendarUtil.getSysTimeYMD());
+
+				// 第一次登录强制修改密码
+				if (aUser.getOnline_flag().intValue() == -1) {
+					return new ModelAndView("login_first").addObject("flag","1");
+				} else {
+					if (this.getLoginService().checkLoginUpdateDate(no) == -1) {
+						return new ModelAndView("login_success").addObject("passtxDate",this.getLoginService().passwdFlarmDay(no));
+					} else { //密码过期
+						return new ModelAndView("login_first").addObject("flag", "0");
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			log.error("Error in LoginController.login: " + e.getClass() + ":" , e);
+			return mv.addObject("message", "登录异常!");
+		}
+		
 	}
 
 

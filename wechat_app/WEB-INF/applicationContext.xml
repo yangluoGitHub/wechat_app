@@ -186,7 +186,10 @@
 		<property name="commonData">
 			<ref bean="commonData" />
 		</property>
-	</bean>	
+	</bean>
+	<bean id="httpClientTools" class="com.weili.wechat.common.HttpClientTools"  init-method="init">
+
+	</bean>
 	
 	<!-- 业务功能 -->
 	

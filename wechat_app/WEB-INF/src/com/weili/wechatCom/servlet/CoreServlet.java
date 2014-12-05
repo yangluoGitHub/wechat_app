@@ -35,9 +35,10 @@ public class CoreServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		// 请求校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
-		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
-			out.print(echostr);
-		}
+//		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
+//			out.print(echostr);
+//		}
+		out.print("okokok");
 		out.close();
 		out = null;
 	}
