@@ -51,7 +51,7 @@ public class html5Servlet extends HttpServlet {
 		         */
 		        
 			  // 跳转到index.jsp
-				 request.getRequestDispatcher("index1.jsp").forward(request, response);
+				 request.getRequestDispatcher("MyJsp.jsp").forward(request, response);
 			 }
 //	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		// 微信加密签名
