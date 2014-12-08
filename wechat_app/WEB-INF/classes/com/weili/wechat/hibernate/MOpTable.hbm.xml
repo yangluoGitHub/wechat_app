@@ -19,5 +19,8 @@
         <property name="mobile" type="string">
             <column name="MOBILE" length="20" not-null="true" />
         </property>
+        <property name="openid" type="string">
+            <column name="OPENID" length="30" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

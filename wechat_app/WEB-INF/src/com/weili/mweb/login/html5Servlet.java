@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.weili.wechat.common.HttpClientTools;
 import com.weili.wechatCom.service.CoreService;
 import com.weili.wechatCom.util.SignUtil;
@@ -33,22 +35,27 @@ public class html5Servlet extends HttpServlet {
 			   throws ServletException, IOException {
 			  // TODO Auto-generated method stub
 		        String code = request.getParameter("code");
-		        System.out.print("code==" + code);
 		        log.info("20141205code==" + code);
 		        request.setAttribute("code", code);
 		        httpClientTools.init();
 		        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9f85f73e85765db&secret=e3a29aaee0558faf27d026b188143a59&code="+code+"&grant_type=authorization_code";
-//		        String requestUrl = "http://192.168.1.112:8080/wechat_app/coreServlet";
-//		        String requestUrl = "https://mp.weixin.qq.com/";
 		        log.info("20141205requestUrl==" + requestUrl);
 		        String jsonStr = httpClientTools.doGet(requestUrl);
 		        request.setAttribute("jsonStr", jsonStr);
 		        log.info("20141205jsonStr==" + jsonStr);
 		        
+		        
+		        String openId = "";
+		        if (IsSuccess(jsonStr)) {
+					JSONObject object = JSON.parseObject(jsonStr);
+					openId = object.getJSONObject("openid").toString();
+				}
+		        log.info("20141205openId==" + openId);
 		        /*
 		         * 解析openId, select from M_OP_table 判断是否已经注册过 如果已经注册过 直接自动登录
 		         * 如果没有此openId 跳转到注册页面， 注册成功后在跳转到登录界面。
 		         */
+		        
 		        
 			  // 跳转到index.jsp
 				 request.getRequestDispatcher("MyJsp.jsp").forward(request, response);
@@ -103,4 +110,32 @@ public class html5Servlet extends HttpServlet {
 //		if (!indexDir.exists())
 //			ChatService.createIndex();
 //	}
+	
+	/**
+	 * TODO 根据微信服务器返回的Json字符串，判断请求是否被成功处理。
+	 * @author adli 2014-3-25 上午11:33:11
+	 * @param jsonString 微信服务器返回的Json字符串。
+	 * @return  请求是否被成功处理。
+	 */
+	public static boolean IsSuccess(String jsonString)
+	{
+		try {
+			JSONObject object = JSON.parseObject(jsonString);
+			String errCode=object.getString("errcode");
+			if (errCode==null||"0".equals(errCode)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+	} catch (Exception e) {
+		log.error("判断json返回串出错！", e);
+		return false;
+	}
+		
+	}
+	
+	public static void main(String[] args) {
+	}
+	
 }

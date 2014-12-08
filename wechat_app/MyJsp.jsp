@@ -25,8 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <% 
     	String code = (String)request.getAttribute("code");
+    	String jsonStr = (String)request.getAttribute("jsonStr");
 	%>
     This is my JSP page. <br>
-    <tr><td><%=code%></td></tr>
+    <tr><td>code=<%=code%></td></tr>
+    <tr><td>jsonStr=<%=jsonStr%></td></tr>
   </body>
 </html>
