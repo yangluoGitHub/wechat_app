@@ -250,16 +250,16 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>html5Servlet</servlet-name>
+		<servlet-name>oAuthServlet</servlet-name>
 		<servlet-class>
-			com.weili.mweb.login.html5Servlet
+			com.weili.wechatCom.servlet.OAuthServlet
 		</servlet-class>
 		<load-on-startup>5</load-on-startup>
 	</servlet>
 	<!-- /coreServlet用于指定该Servlet的访问路径 -->
 	<servlet-mapping>
-		<servlet-name>html5Servlet</servlet-name>
-		<url-pattern>/html5Servlet</url-pattern>
+		<servlet-name>oAuthServlet</servlet-name>
+		<url-pattern>/oAuthServlet</url-pattern>
 	</servlet-mapping>
 	
 	<error-page>

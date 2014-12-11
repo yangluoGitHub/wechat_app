@@ -27,6 +27,7 @@ public class RegisterServiceImpl extends RetInfo implements RegisterService{
 		moptable.setNo(UUID.randomUUID().toString());
 		moptable.setMobile(vo.getMobile());
 		moptable.setPasswd(vo.getPasswd());
+		moptable.setOpenid(vo.getOpenId());
 		
 		commonData.createObject(moptable);
 		this.setRetOK();

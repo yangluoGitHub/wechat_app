@@ -25,11 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <% 
     	String code = (String)request.getAttribute("code");
-    	String jsonStr = (String)request.getAttribute("jsonStr");
     	String openId = (String)request.getAttribute("openId");
+    	MOpTableVO vo =(MOpTableVO)request.getAttribute("mOpTableVO");
 	%>
     This is my JSP page. <br>
-    <tr><td>code=<%=code%></td></tr>
-    <tr><td>jsonStr=<%=jsonStr%></td></tr>
+    <tr><td>code=<%=code%></td></tr><br>
+    <tr><td>openId=<%=openId%></td></tr><br>
+    <tr><td>openId=<%=vo.name%></td></tr><br>
+    <tr><td>openId=<%=vo.mobile%></td></tr><br>
+    <tr><td>openId=<%=vo.openId%></td></tr><br>
   </body>
 </html>

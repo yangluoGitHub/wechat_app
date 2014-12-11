@@ -32,9 +32,12 @@ public class RegisterController extends MultiActionController{
 			String passwd = StringUtil.parseString(request.getParameter("psw1"));                  //√‹¬Î
 			                    //¥¥Ω®’ﬂ  
 			
+			String openId = StringUtil.parseString(request.getParameter("openId"));
+			
 			MOpTableVO vo = new MOpTableVO();
 			vo.setMobile(mobile);
 			vo.setPasswd(passwd);
+			vo.setOpenId(openId);
 			
 			try {
 				this.getRegisterService().register(vo);

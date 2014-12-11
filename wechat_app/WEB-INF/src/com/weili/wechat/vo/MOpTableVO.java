@@ -9,6 +9,10 @@ public class MOpTableVO {
 		private String passwd;
 		private String name;
 		private String mobile;
+		private String openId;
+		
+		
+		
 		public String getNo() {
 			return no;
 		}
@@ -32,6 +36,12 @@ public class MOpTableVO {
 		}
 		public void setMobile(String mobile) {
 			this.mobile = mobile;
+		}
+		public String getOpenId() {
+			return openId;
+		}
+		public void setOpenId(String openId) {
+			this.openId = openId;
 		}
 		
 		
