@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <% 
     	String code = (String)request.getAttribute("code");
     	String jsonStr = (String)request.getAttribute("jsonStr");
+    	String openId = (String)request.getAttribute("openId");
 	%>
     This is my JSP page. <br>
     <tr><td>code=<%=code%></td></tr>

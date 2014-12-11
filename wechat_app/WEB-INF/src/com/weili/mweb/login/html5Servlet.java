@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.weili.wechat.common.HttpClientTools;
 import com.weili.wechatCom.service.CoreService;
 import com.weili.wechatCom.util.SignUtil;
@@ -46,10 +47,10 @@ public class html5Servlet extends HttpServlet {
 		        
 		        
 		        String openId = "";
-		        if (IsSuccess(jsonStr)) {
-					JSONObject object = JSON.parseObject(jsonStr);
-					openId = object.getJSONObject("openid").toString();
-				}
+		        //if (IsSuccess(jsonStr)) {
+		        	JSONObject object = JSONObject.fromObject(jsonStr);
+					openId = object.getString("openid");
+				//}
 		        log.info("20141205openId==" + openId);
 		        /*
 		         * 解析openId, select from M_OP_table 判断是否已经注册过 如果已经注册过 直接自动登录
@@ -120,7 +121,7 @@ public class html5Servlet extends HttpServlet {
 	public static boolean IsSuccess(String jsonString)
 	{
 		try {
-			JSONObject object = JSON.parseObject(jsonString);
+			JSONObject object = JSONObject.fromObject(jsonString);
 			String errCode=object.getString("errcode");
 			if (errCode==null||"0".equals(errCode)) {
 				return true;
@@ -136,6 +137,13 @@ public class html5Servlet extends HttpServlet {
 	}
 	
 	public static void main(String[] args) {
+		
+		String jsonStr = "{\"access_token\":\"OezXcEiiBSKSxW0eoylIeAGe5WAmHVcHxC4puwv-Mnce7dh-xzFJZgBkCAgxz55ksrZJUi8K0J3XU9Op09OK9l7dh9JNWCcs_uCB2uCCTld3ccokMeov4y7A9qimU6-3_MKc3ak5q4vfFUA-XjEOCw\",\"expires_in\":7200,\"refresh_token\":\"OezXcEiiBSKSxW0eoylIeAGe5WAmHVcHxC4puwv-Mnce7dh-xzFJZgBkCAgxz55klba1IcwKIm0m3NNpvHelBE4ax1e68gaYVmW0u3cQaM-NSW8Gzi97Ptrkx53gxacUO_ybRUSJNZMZUWYwNK-z7A\",\"openid\":\"oHNuyt0fVIRCZEh3Xc19zal91rOA\",\"scope\":\"snsapi_base\"}";
+		String openId = "";
+       // if (IsSuccess(jsonStr)) {
+        	JSONObject object = JSONObject.fromObject(jsonStr);
+			openId = object.getString("openid");
+		//}
 	}
 	
 }
