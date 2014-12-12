@@ -67,7 +67,7 @@ public class html5Servlet extends HttpServlet {
 					 request.getRequestDispatcher("MyJsp.jsp").forward(request, response);
 		        	
 		        }else{//Ìø×ªµ½×¢²áÒ³Ãæ
-		        	request.getRequestDispatcher("/demo/demo.html").forward(request, response);
+		        	request.getRequestDispatcher("/demo3/index.html").forward(request, response);
 		        }
 		        
 			  

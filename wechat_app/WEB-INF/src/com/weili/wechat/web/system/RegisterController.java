@@ -28,26 +28,51 @@ public class RegisterController extends MultiActionController{
 	
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response){
 		try {
-			String mobile = StringUtil.parseString(request.getParameter("uid"));              //手机号
-			String passwd = StringUtil.parseString(request.getParameter("psw1"));                  //密码
+			String username = StringUtil.parseString(request.getParameter("username"));              //手机号
+			String passwd = StringUtil.parseString(request.getParameter("password"));                  //密码
 			                    //创建者  
 			
-			String openId = StringUtil.parseString(request.getParameter("openId"));
-			
+			//String openId = StringUtil.parseString(request.getParameter("openId"));
+			String mobile = "15961859732";
+			String openId = "oHNuyt0fVIRCZEh3Xc19zal91rOA";
 			MOpTableVO vo = new MOpTableVO();
 			vo.setMobile(mobile);
+			vo.setName(username);
 			vo.setPasswd(passwd);
 			vo.setOpenId(openId);
 			
 			try {
 				this.getRegisterService().register(vo);
-			    return new ModelAndView("demo.html","message","注册成功");
+			    return new ModelAndView("/demo3/login.jsp","message","注册成功").addObject("username", username);
 			} catch (Exception e) {
 				  return new ModelAndView("info","message","注册失败");
 			}
 		} catch (Exception e) {
 			log.error("注册异常："+ e.getMessage());
 			 return new ModelAndView("info", "message", "注册异常!");
+		}
+	}
+	public ModelAndView wechatLogin(HttpServletRequest request, HttpServletResponse response){
+		try {
+			String username = StringUtil.parseString(request.getParameter("username"));              //手机号
+			String passwd = StringUtil.parseString(request.getParameter("password"));                  //密码
+			                    //创建者  
+			
+			//String openId = StringUtil.parseString(request.getParameter("openId"));
+			
+			MOpTableVO vo = new MOpTableVO();
+			vo.setName(username);
+			vo.setPasswd(passwd);
+			
+			try {
+				int ret = this.getRegisterService().isRegisterUser(vo);
+			    return new ModelAndView("/demo3/success.jsp","message","成功");
+			} catch (Exception e) {
+				  return new ModelAndView("info","message","登录失败");
+			}
+		} catch (Exception e) {
+			log.error("登录异常："+ e.getMessage());
+			 return new ModelAndView("info", "message", "登录异常!");
 		}
 	}
 

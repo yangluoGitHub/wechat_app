@@ -13,4 +13,5 @@ public interface RegisterService extends IRetInfo{
 	 *×¢²áÕËºÅ 
 	 */
 	 public int register(MOpTableVO vo);
+	 public int isRegisterUser(MOpTableVO vo);
 }

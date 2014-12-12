@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/template/snower.css?2014-10-22" media="all" />
+<link rel="stylesheet" type="text/css" href="http://stc.weimob.com/new/template/home-205/css/color_pink.css" />
+<link rel="stylesheet" type="text/css" href="http://stc.weimob.com/new/template/home-205/css/main.css" />
+<link rel="stylesheet" type="text/css" href="http://stc.weimob.com/new/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="http://stc.weimob.com/new/css/common.css" />
+<link rel="stylesheet" type="text/css" href="http://stc.weimob.com/new/css/font-awesome.css" />
+<script type="text/javascript" src="http://stc.weimob.com/src/jQuery.js?2014-10-22"></script>
+<script type="text/javascript" src="http://stc.weimob.com/src/template/maivl.js?2014-10-22"></script>
+<script type="text/javascript" src="http://stc.weimob.com/new/lib/jquery_min.js"></script>
+<script type="text/javascript" src="http://stc.weimob.com/new/lib/iscroll.js"></script>
+<title>为立科技</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        <meta name="Keywords" content="微盟、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" />
+        <meta name="Description" content="微盟，国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->
+                                <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico" />
+                                <link rel="stylesheet" type="text/css" href="css/demo.css" />
+
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    </head>
+    <body>
+
+<div class="codrops-demos">
+	<span>点击 <strong>"加入我们"</strong> 填写表单</span>
+	<a href="index.html" class="current-demo">Demo 1</a>
+	<a href="index2.html">Demo 2</a>
+	<a href="index3.html">Demo 3</a>
+</div>
+
+<div id="container_demo" >
+	<!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+	<a class="hiddenanchor" id="toregister"></a>
+	<a class="hiddenanchor" id="tologin"></a>
+	<div id="wrapper">
+		<div id="login" class="animate form">
+			<form  action="mysuperscript.php" autocomplete="on"> 
+				<h1>登录</h1> 
+				<p> 
+					<label for="username" class="uname" data-icon="u" >您的邮箱或用户名</label>
+					<input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+				</p>
+				<p> 
+					<label for="password" class="youpasswd" data-icon="p">你的密码</label>
+					<input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+				</p>
+				<p class="keeplogin"> 
+					<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+					<label for="loginkeeping">保持登录状态</label>
+				</p>
+				<p class="login button"> 
+					<input type="submit" value="登录" /> 
+				</p>
+				<p class="change_link">
+					不是成员?<a href="#toregister" class="to_register">加入我们</a>
+				</p>
+			</form>
+		</div>
+
+		<div id="register" class="animate form">
+			<form  action="mysuperscript.php" autocomplete="on"> 
+				<h1>注册</h1> 
+				<p> 
+					<label for="usernamesignup" class="uname" data-icon="u">用户名</label>
+					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+				</p>
+				<p> 
+					<label for="emailsignup" class="youmail" data-icon="e" >邮箱</label>
+					<input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+				</p>
+				<p> 
+					<label for="passwordsignup" class="youpasswd" data-icon="p">密码</label>
+					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p> 
+					<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">确认密码</label>
+					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p class="signin button"> 
+					<input type="submit" value="注册"/> 
+				</p>
+				<p class="change_link">  
+					已经是成员?<a href="#tologin" class="to_register"> 去登录 </a>
+				</p>
+			</form>
+		</div>
+		
+	</div>
+	
+</div>
+
+</body>
+<script type="text/javascript">
+(function() {
+	var wtj = document.createElement('script'); wtj.type = 'text/javascript'; wtj.async = true;
+	wtj.src = 'http://tj.weimob.com/wtj.js?url=' + encodeURIComponent(location.href);
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wtj, s);
+})();
+function weimobAfterShare(shareFromWechatId,sendFriendLink,shareToPlatform){
+	var wmShare = document.createElement('script'); wmShare.type = 'text/javascript'; wmShare.async = true;
+    wmShare.src = 'http://tj.weimob.com/api-share.js?fromWechatId=' + shareFromWechatId + '&shareToPlatform=';
+	wmShare.src += shareToPlatform + '&pid=80964&sendFriendLink=' + encodeURIComponent(sendFriendLink);
+    var stj = document.getElementsByTagName('script')[0]; stj.parentNode.insertBefore(wmShare, stj);
+}
+
+/**
+ * 默认分享出去的数据
+ *
+ */
+function getShareImageUrl(){
+
+	var share_imgurl = "";
+	if("" == share_imgurl){
+		var shareImgObj = document.getElementsByClassName("shareImgUrl")[0];
+		if('undefined' != typeof(shareImgObj)){
+			share_imgurl = shareImgObj.src;
+		}
+	}
+	return window.shareData.imgUrl || share_imgurl;
+}
+
+window.shareData = window.shareData || {
+		"timeLineLink": "http://80964.m.weimob.com/Weisite/Home?pid=80964&bid=167863&wechatid=fromUsername",
+	"sendFriendLink": "http://80964.m.weimob.com/Weisite/Home?pid=80964&bid=167863&wechatid=fromUsername",
+	"weiboLink": "http://80964.m.weimob.com/Weisite/Home?pid=80964&bid=167863&wechatid=fromUsername",
+	"tTitle": document.title,
+	"tContent": document.title,
+	"fTitle": document.title,
+	"fContent": document.title,
+	"wContent": document.title
+}
+
+
+//loadChangeUrlChannel("timeLineLink","fc");
+//loadChangeUrlChannel("sendFriendLink","f");
+if(!window.pass_share){
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	//loadChangeUrlChannel();
+	// 发送给好友
+	WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+		WeixinJSBridge.invoke('sendAppMessage', { 
+			"img_url": getShareImageUrl(),
+			"img_width": "640",
+			"img_height": "640",
+			"link": window.shareData.sendFriendLink,
+			"desc": window.shareData.fContent,
+			"title": window.shareData.fTitle
+		}, function (res) {
+			if('send_app_msg:cancel' != res.err_msg){
+				weimobAfterShare("",window.shareData.sendFriendLink,'appmessage');
+			}
+			_report('send_msg', res.err_msg);
+		})
+	});
+
+	// 分享到朋友圈
+	WeixinJSBridge.on('menu:share:timeline', function (argv) {
+		
+		WeixinJSBridge.invoke('shareTimeline', {
+			"img_url": getShareImageUrl(),
+			"img_width": "640",
+			"img_height": "640",
+			"link": window.shareData.timeLineLink,
+			"desc": window.shareData.tContent,
+			"title": window.shareData.tTitle
+		}, function (res) {
+			if('share_timeline:cancel' != res.err_msg){
+				//如果用户没有取消
+				weimobAfterShare("",window.shareData.timeLineLink,'timeline');
+			}
+			_report('timeline', res.err_msg);
+		});
+	});
+
+	// 分享到微博
+	WeixinJSBridge.on('menu:share:weibo', function (argv) {
+		WeixinJSBridge.invoke('shareWeibo', {
+			"content": window.shareData.wContent,
+			"url": window.shareData.weiboLink
+		}, function (res) {
+			if('share_weibo:cancel' != res.err_msg){
+				weimobAfterShare("",window.shareData.weiboLink,'weibo');
+			}
+			_report('weibo', res.err_msg);
+		});
+	});
+}, false);
+}
+
+</script>
+<script type="text/javascript" src="http://kf.weimob.com/js/ChatFloat.js"></script>
+<script type="text/javascript">
+var str_domain = location.href.split('/',4)[2];
+var boolIsTest = true;
+if(str_domain == 'www.weimob.com' || str_domain.indexOf('m.weimob.com') > 0){
+	boolIsTest = false;
+}
+//1.0 web
+new ChatFloat({
+        AId: '80964',
+        openid: "",
+		top:150,
+		right:0,
+		IsTest:boolIsTest
+});
+</script>
+<!--
+echo STATIC_DOMAIN."/src/jQuery.js?v=10101011 
+-->
+<script type="text/javascript" src="http://stc.weimob.com/src/st/share_channel.js?v=111111"></script>
+<script type="text/javascript" src="http://stc.weimob.com/src/st/base64.js?v=10101010"></script>
+<script type="text/javascript" src="http://stc.weimob.com/src/st/st.js?v=1418353703"></script>
+<script type="text/javascript">
+ //var jq=$.noConflict();
+ //使用案例如###如若上线请到研发群找我@赵增煜###
+st.push("_triggerEvent",{
+		"is_statistic_on":"on", //开关
+		"statisticServerPath": "http://statistic.weimob.com/wm.js", //统计地址
+		"memcServerPath": "http://statistic.weimob.com/memc?cmd=get", //缓存地址
+		"stat_action":"loadPage",  //统计动作类型
+		"stat_optValue":""    //参数值
+});
+</script>
+</html>
+
