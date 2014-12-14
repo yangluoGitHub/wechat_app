@@ -16,7 +16,7 @@
     <head>
 
         <meta charset="utf-8">
-        <title>为立科技</title>
+        <title>见性</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -43,13 +43,7 @@
         <div class="header">
             <div class="container">
                 <div class="row">
-                    <div class="logo span4">
-                        <h1><a href="">iApp Register <span class="red">.</span></a></h1>
-                    </div>
-                    <div class="links span8">
-                        <a class="home" href="" rel="tooltip" data-placement="bottom" data-original-title="Home"></a>
-                        <a class="blog" href="" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -66,7 +60,6 @@
                 </div>
             </div>
         </div>
-		<div align="center">Copyright &copy; 2014.Company name All rights reserved.</div>
         
 
 <script language="javascript">

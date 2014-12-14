@@ -71,7 +71,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\r\n");
       out.write("\r\n");
       out.write("        <meta charset=\"utf-8\">\r\n");
-      out.write("        <title>Fullscreen Responsive Register Template</title>\r\n");
+      out.write("        <title>è§æ§</title>\r\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
       out.write("        <meta name=\"description\" content=\"\">\r\n");
       out.write("        <meta name=\"author\" content=\"\">\r\n");
@@ -98,13 +98,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"header\">\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row\">\r\n");
-      out.write("                    <div class=\"logo span4\">\r\n");
-      out.write("                        <h1><a href=\"\">iApp Register <span class=\"red\">.</span></a></h1>\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                    <div class=\"links span8\">\r\n");
-      out.write("                        <a class=\"home\" href=\"\" rel=\"tooltip\" data-placement=\"bottom\" data-original-title=\"Home\"></a>\r\n");
-      out.write("                        <a class=\"blog\" href=\"\" rel=\"tooltip\" data-placement=\"bottom\" data-original-title=\"Blog\"></a>\r\n");
-      out.write("                    </div>\r\n");
+      out.write("                    \r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
@@ -116,7 +110,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("                <div class=\"register span6\">\r\n");
       out.write("                    <form action=\"register.do?action=wechatLogin\" method=\"post\">\r\n");
-      out.write("                        <h2><span class=\"red\"><strong>ä¸ºç«ç§æ</strong></span></h2>\r\n");
+      out.write("                        <h2><span class=\"red\"><strong>è§æ§</strong></span></h2>\r\n");
       out.write("                        \r\n");
       out.write("                        <label for=\"username\">ç¨æ·å</label>\r\n");
       out.write("                        <input type=\"text\" id=\"username\" name=\"username\"  value=\"");
@@ -129,7 +123,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("\t\t<div align=\"center\">Copyright &copy; 2014.Company name All rights reserved.</div>\r\n");
       out.write("        \r\n");
       out.write("\r\n");
       out.write("<script language=\"javascript\">\r\n");
