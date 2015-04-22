@@ -36,25 +36,25 @@ public class html5Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			   throws ServletException, IOException {
 			  // TODO Auto-generated method stub
-//		        String code = request.getParameter("code");
-//		        log.info("20141205code==" + code);
-//		        request.setAttribute("code", code);
-//		        httpClientTools.init();
-//		        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9f85f73e85765db&secret=e3a29aaee0558faf27d026b188143a59&code="+code+"&grant_type=authorization_code";
-//		        log.info("20141205requestUrl==" + requestUrl);
-//		        String jsonStr = httpClientTools.doGet(requestUrl);
-//		        request.setAttribute("jsonStr", jsonStr);
-//		        log.info("20141205jsonStr==" + jsonStr);
-//		        
-//		        
-//		        String openId = "";
-//		        //if (IsSuccess(jsonStr)) {
-//		        	JSONObject object = JSONObject.fromObject(jsonStr);
-//					openId = object.getString("openid");
-//				//}
-//		        log.info("20141205openId==" + openId);
+		        String code = request.getParameter("code");
+		        log.info("20141205code==" + code);
+		        request.setAttribute("code", code);
+		        httpClientTools.init();
+		        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9f85f73e85765db&secret=e3a29aaee0558faf27d026b188143a59&code="+code+"&grant_type=authorization_code";
+		        log.info("20141205requestUrl==" + requestUrl);
+		        String jsonStr = httpClientTools.doGet(requestUrl);
+		        request.setAttribute("jsonStr", jsonStr);
+		        log.info("20141205jsonStr==" + jsonStr);
+		        
+		        
+		        String openId = "";
+		        //if (IsSuccess(jsonStr)) {
+		        	JSONObject object = JSONObject.fromObject(jsonStr);
+					openId = object.getString("openid");
+				//}
+		        log.info("20141205openId==" + openId);
 		        //String openId = "oHNuyt0fVIRCZEh3Xc19zal91rOA";
-		        String openId = "oHNuyt0fVIRCZEh3Xc19zal91rOA1";
+		        openId = "oHNuyt0fVIRCZEh3Xc19zal91rOA1";
 		        request.setAttribute("openId", openId);
 		        List<MOpTableVO> list = MySQLUtil1.getUserByOpenId(openId);
 		        
