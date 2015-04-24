@@ -1089,3 +1089,104 @@ Caused by: java.sql.SQLException: Io 异常: The Network Adapter could not establi
 2015-04-24 09:33:14 [] [com.weili.wechat.web.login.LoginController]-[INFO] 返回码=[0] 返回信息=[登录成功!]
 2015-04-24 09:33:14 [] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 1
 2015-04-24 09:33:14 [] [com.weili.wechat.web.login.SessionController]-[INFO] userAccount: [admin1] 
+2015-04-24 10:03:47 [] [org.springframework.web.context.ContextLoader]-[INFO] Root WebApplicationContext: initialization started
+2015-04-24 10:03:47 [] [org.springframework.web.context.support.XmlWebApplicationContext]-[INFO] Refreshing Root WebApplicationContext: startup date [Fri Apr 24 10:03:47 CST 2015]; root of context hierarchy
+2015-04-24 10:03:47 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/common.xml]
+2015-04-24 10:03:48 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/data.xml]
+2015-04-24 10:03:48 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-04-24 10:03:49 [] [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]-[INFO] Loading properties file from ServletContext resource [/WEB-INF/cfg.properties]
+2015-04-24 10:03:49 [] [org.springframework.beans.factory.support.DefaultListableBeanFactory]-[INFO] Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4f9db2da: defining beans [propertyConfigurer,jdbcUtil,dataSource,sessionFactory,commonData,logAuditDAO,roleDAO,menuDAO,buttonDAO,userDAO,operateDAO,moduleDAO,auditDAO,nameDAO,logAudit,audit,logAspectTarget,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,org.springframework.aop.aspectj.AspectJPointcutAdvisor#0,businessService,txAdvice,loginService,sysParamService,sysRoleService,auditService,roleService,userService,logAuditService,getResource,basicQryService,sysAreaService,httpClientTools,storeInfoService,storeCommClassificationInfoService,storeCommInfoService,storeClassificationService]; root of factory hierarchy
+2015-04-24 10:03:50 [] [com.alibaba.druid.pool.DruidDataSource]-[INFO] {dataSource-1} inited
+2015-04-24 10:03:51 [] [org.springframework.orm.hibernate3.LocalSessionFactoryBean]-[INFO] Building new Hibernate SessionFactory
+2015-04-24 10:03:52 [] [org.springframework.orm.hibernate3.HibernateTransactionManager]-[INFO] Using DataSource [{
+	CreateTime:"2015-04-24 10:03:49",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:1,
+	ConnectCount:1,
+	Connections:[
+		{ID:1122898135, ConnectTime:"2015-04-24 10:03:50", UseCount:1, LastActiveTime:"2015-04-24 10:03:52"}
+	]
+}
+
+[
+	{
+	ID:1122898135, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+2015-04-24 10:03:53 [] [org.springframework.web.context.ContextLoader]-[INFO] Root WebApplicationContext: initialization completed in 6340 ms
+2015-04-24 10:03:53 [] [com.weili.wechat.common.SystemParamLoader]-[INFO] 初始化系统参数
+2015-04-24 10:03:54 [] [com.weili.wechat.common.SystemParamLoader]-[INFO] SysParamTab size = [4]
+2015-04-24 10:03:54 [] [org.springframework.web.servlet.DispatcherServlet]-[INFO] FrameworkServlet 'wechat': initialization started
+2015-04-24 10:03:54 [] [org.springframework.web.context.support.XmlWebApplicationContext]-[INFO] Refreshing WebApplicationContext for namespace 'wechat-servlet': startup date [Fri Apr 24 10:03:54 CST 2015]; parent: Root WebApplicationContext
+2015-04-24 10:03:54 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/wechat-servlet.xml]
+2015-04-24 10:03:55 [] [org.springframework.beans.factory.support.DefaultListableBeanFactory]-[INFO] Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@58ccb0b4: defining beans [mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.view.ContentNegotiatingViewResolver#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,methodNameResolver,exceptionResolver,multipartResolver,timeoutInterceptor,authInterceptor,requestInterceptor,logInterceptor,simpleUrlMapping,loginController,userController,roleController,sysParamController,staticPagesController,storeInfoController,storeCommClassificationInfoController,storeCommInfoController,storeClassificationController]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@4f9db2da
+2015-04-24 10:03:56 [] [org.springframework.oxm.jaxb.Jaxb2Marshaller]-[INFO] Creating JAXBContext by scanning packages [documentLoader.domain]
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/param.do] onto handler 'sysParamController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeCommInfo.do] onto handler 'storeCommInfoController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeInfo.do] onto handler 'storeInfoController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/user.do] onto handler 'userController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/staticPages.do] onto handler 'staticPagesController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/role.do] onto handler 'roleController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeClassification.do] onto handler 'storeClassificationController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeCommClassificationInfo.do] onto handler 'storeCommClassificationInfoController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/login.do] onto handler 'loginController'
+2015-04-24 10:03:56 [] [org.springframework.web.servlet.DispatcherServlet]-[INFO] FrameworkServlet 'wechat': initialization completed in 1403 ms
+2015-04-24 10:20:31 [] [com.weili.wechat.web.login.LoginController]-[INFO] UserOnLineNum==0
+2015-04-24 10:20:31 [] [com.weili.wechat.web.login.LoginController]-[INFO] max=[100] now=[0]
+2015-04-24 10:20:31 [] [com.weili.wechat.web.login.LoginController]-[INFO] 返回码=[0] 返回信息=[登录成功!]
+2015-04-24 10:20:31 [] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 1
+2015-04-24 10:20:31 [] [com.weili.wechat.web.login.SessionController]-[INFO] userAccount: [admin1] 
+2015-04-24 10:20:36 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:20:43 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:20:45 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:22:39 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:22:42 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:22:43 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:23:30 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:23:34 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:23:36 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:24:46 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:24:50 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:24:51 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:26:55 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:26:59 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:27:00 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:27:06 [admin1] [com.weili.wechat.web.manage.StoreCommInfoController]-[INFO] qryM in
+2015-04-24 10:27:53 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:27:56 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:27:57 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:28:03 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:28:04 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:28:07 [admin1] [com.weili.wechat.web.manage.StoreCommInfoController]-[INFO] qryM in
+2015-04-24 10:28:23 [] [com.weili.wechat.web.login.LoginController]-[INFO] UserOnLineNum==1
+2015-04-24 10:28:23 [] [com.weili.wechat.web.login.LoginController]-[INFO] max=[100] now=[1]
+2015-04-24 10:28:23 [] [com.weili.wechat.web.login.LoginController]-[INFO] 返回码=[0] 返回信息=[登录成功!]
+2015-04-24 10:28:23 [] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 2
+2015-04-24 10:28:23 [] [com.weili.wechat.web.login.SessionController]-[INFO] userAccount: [admin1] 
+2015-04-24 10:28:30 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:28:34 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:28:40 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:28:46 [admin1] [com.weili.wechat.web.manage.StoreCommInfoController]-[INFO] qryM in
+2015-04-24 10:28:53 [admin1] [com.weili.wechat.web.manage.StoreCommInfoController]-[INFO] qryM in
+2015-04-24 10:30:10 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:30:13 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:30:17 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:30:21 [admin1] [com.weili.wechat.web.manage.StoreCommInfoController]-[INFO] qryM in
+2015-04-24 10:30:44 [admin1] [com.weili.wechat.web.manage.StoreClassificationController]-[INFO] qryM in
+2015-04-24 10:30:47 [admin1] [com.weili.wechat.web.manage.StoreInfoController]-[INFO] qryM in
+2015-04-24 10:31:26 [] [com.weili.wechat.web.login.LoginController]-[INFO] UserOnLineNum==2
+2015-04-24 10:31:26 [] [com.weili.wechat.web.login.LoginController]-[INFO] max=[100] now=[2]
+2015-04-24 10:31:26 [] [com.weili.wechat.web.login.LoginController]-[INFO] 返回码=[0] 返回信息=[登录成功!]
+2015-04-24 10:31:26 [] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 3
+2015-04-24 10:31:26 [] [com.weili.wechat.web.login.SessionController]-[INFO] userAccount: [admin1] 
+2015-04-24 10:31:57 [admin1] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 2
+2015-04-24 10:31:57 [admin1] [com.weili.wechat.web.login.LoginController]-[INFO] UserOnLineNum==2
+2015-04-24 10:31:57 [admin1] [com.weili.wechat.web.login.LoginController]-[INFO] max=[100] now=[2]
+2015-04-24 10:31:57 [admin1] [com.weili.wechat.web.login.LoginController]-[INFO] 返回码=[0] 返回信息=[登录成功!]
+2015-04-24 10:31:57 [admin1] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 3
+2015-04-24 10:31:57 [admin1] [com.weili.wechat.web.login.SessionController]-[INFO] userAccount: [admin1] 

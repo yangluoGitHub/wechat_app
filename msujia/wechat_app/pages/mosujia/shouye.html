@@ -50,7 +50,8 @@
 					 success: function(json){	
 						 alert(json);
 						 var content="<option>百货</option>";
-						  $.each( json, function(i, n){					 
+						  $.each( json, function(i, n){	
+						    alert(n.clName);				 
 							content = content + "<option>";
 							content = content + n.clName;
 							content = content + "</option>";			
@@ -341,6 +342,7 @@
         </div>	 	
         <div data-role="content" data-theme="c">
         	  <ul data-role="listview" id="goods" data-icon="false">
+                   <!-- 
                     <li>
                         <a href="#detail" data-rel="dialog"><img src="images/美食速达.jpg">
                              <h2>苹果</h2>
@@ -391,7 +393,8 @@
                                 <em>0</em>
                                 <a href="#" class="add" data-role="button" data-icon="plus" data-iconpos="notext" data-theme="c" data-inline="true"></a>
                          </div>
-                    </li>	 
+                    </li>
+                     -->	 
                    
             </ul>
        </div>		
