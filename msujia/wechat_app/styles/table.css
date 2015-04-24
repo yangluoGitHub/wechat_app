@@ -1,0 +1,67 @@
+.title { 
+   font-family : Arial,Vernada,Tahoma, sans-serif;
+   font-size: 26px;
+   color : #00008B;
+   background-color : White;
+}
+.only_for_print{display: none}
+
+.normal{
+	font-family : Arial,Vernada, Tahoma, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #444444;
+	text-decoration: none;
+	line-height: 21px;
+        
+}
+
+.table_bg{                            
+
+border-collapse:collapse; /* 关键属性：合并表格内外边框(其实表格边框有2px，外面1px，里面还有1px哦) */
+border:solid #000; /* 设置边框属性；样式(solid=实线)、颜色(#999=灰) */
+border-width:1px 0 0 1px; /* 设置边框状粗细：上 右 下 左 = 对应：1px 0 0 1px */
+}
+.tr_bg1{
+	height:14px;
+	background-color: #EbD8EB;
+}
+.tr_bg2{
+	height:14px;
+	background-color: #fff;    
+}
+.tr_bg3{
+	height:14px;
+	background-color: #f1f1f1;    
+}
+.inputsize{
+	width:70px;
+	border-width:1px;
+	background-color: #f1f1f1;
+}
+.inputsize3{
+	width:70px;
+	border-width:0;
+}
+.inputsize1{
+	width:140px;
+	border-width:0;
+}
+.inputsize4{
+	width:75px;
+	border-width:0;
+	font-size:12px;
+}
+.inputsize2{
+	width:70px;
+	border-width:0;
+	font-size:14px;
+}
+.td_bg1{
+	border:solid #000;border-width:0 1px 1px 0;padding:2px;
+	}
+.td_bg2{
+	border:solid #000;border-width:0 1px 1px 0;padding:2px;
+	height:50;
+	text-align:center;
+	}	
+

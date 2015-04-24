@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://directwebremoting.org/dwr/dwr20.dtd">
+<dwr> 
+	<allow>
+		<create creator="spring" javascript="roleService">		    
+			<param name="beanName" value="roleService"/>
+		</create>
+		<create creator="spring" javascript="logAuditService">		    
+			<param name="beanName" value="logAuditService"/>
+		</create>	
+		<create creator="spring" javascript="auditService">		    
+			<param name="beanName" value="auditService"/>
+		</create>	
+		<create creator="spring" javascript="userService">		    
+			<param name="beanName" value="userService"/>
+		</create>
+		<create creator="spring" javascript="loginService">
+			<param name="beanName" value="loginService"/>
+		</create>
+		<create creator="spring" javascript="sysParamService">
+			<param name="beanName" value="sysParamService"/>
+		</create>
+		
+		<create creator="spring" javascript="storeInfoService">
+			<param name="beanName" value="storeInfoService"/>
+		</create>
+		
+		<create creator="spring" javascript="storeCommInfoService">
+			<param name="beanName" value="storeCommInfoService"/>
+		</create>
+		
+		<convert converter="bean" match="java.lang.StackTraceElement" />
+  		<convert converter="exception" match="java.lang.Exception" />		
+		<convert converter="hibernate3" match= "com.weili.wechat.vo.Role"> 
+			<param name="include" value="no,name" /> 
+		</convert>
+		<convert converter="hibernate3" match= "com.weili.wechat.vo.User"> 
+			<param name="include" value="no,name,org,groupType,duty,workStatus,telephone,mobile,email" /> 
+		</convert>
+		<convert converter="hibernate3" match= "com.weili.wechat.vo.Button"> 
+			<param name="include" value="no,name" /> 
+		</convert>		
+		<convert converter="hibernate3" match= "com.weili.wechat.hibernate.SysOperate"> 
+			<param name="include" value="no,name" /> 
+		</convert>
+		<!-- OpTable -->
+		<convert converter="hibernate3" match= "com.weili.wechat.hibernate.OpTable"> 
+			<param name="include" value="no,name,srvStationTable,phone,mobile,email,tagReaderNo,groupType,duty,workStatus" /> 
+		</convert>
+	</allow>
+</dwr>

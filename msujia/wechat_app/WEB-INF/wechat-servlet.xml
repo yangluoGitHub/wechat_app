@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xmlns:mvc="http://www.springframework.org/schema/mvc"
+	     xmlns:context="http://www.springframework.org/schema/context"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!--
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	-->
+	
+	<!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射-->  
+ 	<mvc:annotation-driven />  
+ 	<!-- 启动包扫描功能，以便注册带有@Controller、@Service、@repository、@Component等注解的类成为spring的bean -->  
+ 	<!-- <context:component-scan base-package="com.weili.wechat.web.manage" />   -->
+     
+	<!-- REST -->  
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">  
+        <property name="order" value="1" />  
+        <property name="contentNegotiationManager">  
+            <bean class="org.springframework.web.accept.ContentNegotiationManager">  
+                <constructor-arg>  
+                    <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">  
+                        <constructor-arg>  
+                            <map>  
+                                <entry key="json" value="application/json"/>  
+                                <entry key="xml" value="application/xml"/>  
+                            </map>  
+                        </constructor-arg>  
+                    </bean>  
+                </constructor-arg>  
+            </bean>  
+        </property>  
+  
+  
+        <property name="defaultViews">  
+            <list>  
+                <!-- JSON View -->  
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />  
+  
+                <!-- XML View -->  
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">  
+                    <constructor-arg>  
+                        <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">  
+                            <property name="packagesToScan">  
+                                <list>  
+                                    <value>documentLoader.domain</value>  
+                                </list>  
+                            </property>  
+                        </bean>  
+                    </constructor-arg>  
+                </bean>  
+            </list>  
+        </property>  
+    </bean>  
+  
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />  
+        <property name="prefix" value="/pages/" />  
+        <property name="suffix" value=".jsp" />  
+    </bean>  
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+        <property name="paramName">
+            <value>action</value>
+        </property>        
+    </bean>
+    
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">maxUploadExceeded</prop>
+			</props> 
+		</property>
+	</bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize">
+	        <value>20971520</value>
+	    </property>
+	    <property name="maxInMemorySize">
+	        <value>4096</value>
+	    </property>
+	</bean>
+	
+    <bean id="timeoutInterceptor" class="com.weili.wechat.common.TimeoutInterceptor"/>
+    <bean id="authInterceptor" class="com.weili.wechat.common.AuthInterceptor">
+    </bean>
+    <bean id="requestInterceptor" class="com.weili.wechat.common.RequestInterceptor">
+    	<description>请求数据拦截</description>
+    	<property name="logAudit" ref="logAudit" />
+	</bean>	
+    <bean id="logInterceptor" class="com.weili.wechat.common.LogInterceptor">
+    	<description>Url方式记日志</description>
+    	<property name="logAudit" ref="logAudit" />
+    	<property name="logAuditService" ref="logAuditService" />
+    	<property name="userService" ref="userService" />
+	</bean>		
+			
+  	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+		    <list>
+		        <ref local="timeoutInterceptor"/>
+		        <ref local="authInterceptor"/>
+		        <ref local="requestInterceptor"/>
+		        <ref local="logInterceptor"/>
+		    </list>
+		</property>
+		
+		<property name="mappings">
+			<props>
+                <!--login-->
+			    <prop key="*/login.do">loginController</prop>
+			    <!--system-->
+			    <prop key="*/user.do">userController</prop>
+			    <prop key="*/role.do">roleController</prop>
+			    <prop key="*/param.do">sysParamController</prop>
+			    <prop key="*/staticPages.do">staticPagesController</prop>
+				
+				<!--门店管理 -->
+				<prop key="*/storeInfo.do">storeInfoController</prop>
+				<prop key="*/storeCommClassificationInfo.do">storeCommClassificationInfoController</prop>
+				<prop key="*/storeCommInfo.do">storeCommInfoController</prop>
+				<prop key="*/storeClassification.do">storeClassificationController</prop>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 登录 -->
+	<bean id="loginController" class="com.weili.wechat.web.login.LoginController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="loginService" ref ="loginService"/>
+		<property name="userService" ref ="userService"/>
+		<property name="sysRoleService" ref ="sysRoleService"/>
+		<property name="httpClientTools" ref ="httpClientTools"/>
+	</bean>
+	
+	
+	<!-- 系统管理 -->
+	<!-- 用户管理 -->
+	<bean id="userController" class="com.weili.wechat.web.system.UserController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="userService" ref ="userService"/>
+		<property name="sysRoleService" ref ="sysRoleService"/>
+		<property name="sysParamService" ref ="sysParamService"/>
+	</bean>
+
+	<!-- 角色管理 -->
+	<bean id="roleController" class="com.weili.wechat.web.system.RoleController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>
+		<property name="roleService" ref ="roleService"/>
+	</bean>
+	 
+	
+	<!-- 系统运行参数 -->
+	<bean id="sysParamController" class="com.weili.wechat.web.system.SysParamController">
+	    <property name="methodNameResolver">
+			<ref local="methodNameResolver"/>
+		</property>		
+		<property name="sysParamService" ref ="sysParamService"/>
+	</bean>
+	
+	<bean id="staticPagesController" class="com.weili.wechat.web.system.StaticPagesController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+ 	</bean>
+ 	
+ 	<bean id="storeInfoController" class="com.weili.wechat.web.manage.StoreInfoController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="storeInfoService" ref ="storeInfoService"/>
+ 	</bean>
+ 	<bean id="storeCommClassificationInfoController" class="com.weili.wechat.web.manage.StoreCommClassificationInfoController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="storeCommClassificationInfoService" ref ="storeCommClassificationInfoService"/>
+ 	</bean>
+ 	<bean id="storeCommInfoController" class="com.weili.wechat.web.manage.StoreCommInfoController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="storeCommInfoService" ref ="storeCommInfoService"/>
+ 	</bean>
+ 	<bean id="storeClassificationController" class="com.weili.wechat.web.manage.StoreClassificationController">
+    	<property name="methodNameResolver">
+    		<ref local="methodNameResolver"/>
+    	</property>
+    	<property name="storeClassificationService" ref ="storeClassificationService"/>
+ 	</bean>
+</beans>

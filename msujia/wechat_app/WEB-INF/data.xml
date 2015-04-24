@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	 
+	<bean id="jdbcUtil" class="com.weili.wechat.dao.JdbcUtil">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="20" />  
+    	<property name="maxWait" value="60000" />
+    		
+    	<property name="timeBetweenEvictionRunsMillis" value="60000" />  
+    	<property name="minEvictableIdleTimeMillis" value="300000" />  
+   
+    	<property name="validationQuery" value="SELECT 'x' FROM DUAL" />
+    	<property name="testWhileIdle" value="true" />  
+    	<property name="testOnBorrow" value="false" />  
+    	<property name="testOnReturn" value="false" />  
+       
+    	<property name="poolPreparedStatements" value="true" />  
+    	<property name="maxPoolPreparedStatementPerConnectionSize" value="50" />
+    	
+    	<property name="filters" value="stat" /> 	
+	</bean>
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>${jndi.name}</value>
+		</property>
+		<property name="resourceRef"> 
+            <value>false</value>
+        </property> 
+		<property name="jndiEnvironment"> 
+            <props> 
+                <prop key="java.naming.provider.url">${provider.url}</prop> 
+                <prop key="java.naming.factory.initial">${factory.initial}</prop> 
+            </props> 
+        </property> 		
+	</bean>  
+	-->	
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+			<!-- 基本信息管理 -->
+			<value>com/weili/wechat/hibernate/SysButton.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysParam.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysRole.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysName.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/OpTable.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysAudit.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysConfRoleMenu.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysConfRoleButton.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysLog.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysOperate.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysModule.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysMenu.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/SysParamCatalog.hbm.xml</value>
+			
+			<!-- 公众号管理 -->
+			<value>com/weili/wechat/hibernate/StoreInfo.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/StoreClassificationInfo.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/StoreCommInfo.hbm.xml</value>
+			<value>com/weili/wechat/hibernate/StoreCommClassificationInfo.hbm.xml</value>
+			
+			
+			
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.max_fetch_depth">1</prop> 
+			</props>
+		</property>
+	</bean>
+
+	<bean id="commonData" class="com.weili.wechat.dao.CommonDataImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>
+	
+	<!-- 系统管理 -->
+	<bean id="logAuditDAO" class="com.weili.wechat.dao.system.impl.LogAuditDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>		
+	
+	<bean id="roleDAO" class="com.weili.wechat.dao.system.impl.RoleDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>
+	
+	<bean id="menuDAO" class="com.weili.wechat.dao.system.impl.MenuDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>
+	
+	<bean id="buttonDAO" class="com.weili.wechat.dao.system.impl.ButtonDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>
+	<bean id="userDAO" class="com.weili.wechat.dao.system.impl.UserDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>	
+	<bean id="operateDAO" class="com.weili.wechat.dao.system.impl.OperateDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>	
+	<bean id="moduleDAO" class="com.weili.wechat.dao.system.impl.ModuleDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>		
+	<bean id="auditDAO" class="com.weili.wechat.dao.system.impl.AuditDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>	
+	<bean id="nameDAO" class="com.weili.wechat.dao.system.impl.NameDAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>		
+	</bean>
+</beans>

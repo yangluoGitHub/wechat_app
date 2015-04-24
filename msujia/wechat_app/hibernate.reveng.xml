@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+
+
+
+	<table name="ORG_TABLE" schema="TSP">
+		<column name="ORG_GRADE_NO" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="ORG_TYPE_NO" jdbc-type="INTEGER" type="integer"></column>
+		<column name="STATUS" jdbc-type="INTEGER" type="integer"></column>
+		<column name="AWAY_FLAG" jdbc-type="INTEGER" type="integer"></column>
+		<column name="ORG_STATUS" jdbc-type="INTEGER" type="integer"></column>
+		<column name="ADDRESS_REGION_TYPE" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+	</table>
+	<table name="OP_TABLE" schema="TSP">
+		<column name="STATUS" jdbc-type="INTEGER" type="integer" />
+		<column name="ONLINE_FLAG" jdbc-type="INTEGER" type="integer" />
+		<column name="ROLE" jdbc-type="INTEGER" type="integer" />
+		<column name="PASSWD_ERROR" jdbc-type="INTEGER" type="integer" />
+		<column name="SIGN_FLAG" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_ORG_TYPE" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+	</table>
+	<table name="SYS_ORG_GRADE" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="ORG_TYPE" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_ROLE" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="CATALOG" jdbc-type="INTEGER" type="integer" />
+		<column name="ORG_TYPE" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_MENU" schema="TSP">
+		<column name="MENU_LEVEL" jdbc-type="INTEGER" type="integer" />
+		<column name="MENU_ORDER" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_BUTTON" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="MENU" jdbc-type="INTEGER" type="integer" />
+		<column name="BUTTON_ORDER" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_CONF_ROLE_MENU" schema="TSP">
+		<primary-key>
+			<key-column name="ROLENO" jdbc-type="INTEGER"
+				type="integer" />
+			<key-column name="MENUNO" jdbc-type="INTEGER"
+				type="integer" />
+		</primary-key>
+	</table>
+	<table name="SYS_CONF_ROLE_BUTTON" schema="TSP">
+		<primary-key>
+			<key-column name="ROLENO" jdbc-type="INTEGER"
+				type="integer" />
+			<key-column name="BUTTONNO" jdbc-type="INTEGER"
+				type="integer" />
+		</primary-key>
+	</table>
+	<table name="SYS_PARAM" schema="TSP">
+		<column name="CATALOG" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_PARAM_CATALOG" schema="TSP">
+		<primary-key>
+			<key-column name="CATALOG" jdbc-type="INTEGER"
+				type="integer" />
+		</primary-key>
+	</table>
+	<table name="DEV_CATALOG_TABLE" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+	</table>
+	<table name="DEV_VENDOR_TABLE" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="STATUS" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="DEV_TYPE_TABLE" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="DEV_VENDOR" jdbc-type="INTEGER" type="integer" />
+		<column name="DEV_CATALOG" jdbc-type="INTEGER" type="integer" />
+		<column name="WEIGHT" jdbc-type="INTEGER" type="integer" />
+		<column name="WATT" jdbc-type="INTEGER" type="integer" />
+		<column name="CASH_TYPE" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="DEV_SERVICE_COMPANY" schema="TSP">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+	</table>
+	<table name="DEV_BASE_INFO" schema="TSP">
+		<column name="AWAY_FLAG" jdbc-type="INTEGER" type="integer"></column>
+		<column name="DEV_TYPE" jdbc-type="INTEGER" type="integer"></column>
+		<column name="WORK_TYPE" jdbc-type="INTEGER" type="integer"></column>
+		<column name="STATUS" jdbc-type="INTEGER" type="integer"></column>
+		<column name="DEV_SERVICE" jdbc-type="INTEGER" type="integer"></column>
+		<column name="SETUP_TYPE" jdbc-type="INTEGER" type="integer"></column>
+		<column name="CASSETTE_STANTARD_SIZE" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="DEV_STANTARD_SIZE" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+	</table>
+
+	<table name="WECHAT_MENU_ITEM">
+		<column name="MENU_TYPE" type="integer" jdbc-type="INTEGER"></column>
+	</table>
+	<table name="SYS_BUTTON">
+		<primary-key>
+
+
+
+
+
+
+
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="BUTTON_ORDER" type="integer"
+			jdbc-type="INTEGER">
+		</column>
+	</table>
+
+	<table name="PUBLIC_ACCOUNT">
+		<column name="WECHAT_TYPE" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="SYS_MENU">
+		<column name="MENU_LEVEL" jdbc-type="INTEGER" type="integer"></column>
+		<column name="MENU_ORDER" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="SYS_PARAM" schema="WECHAT">
+		<column name="CATALOG" jdbc-type="INTEGER" type="integer" />
+	</table>
+	<table name="SYS_PARAM_CATALOG">
+		<primary-key>
+			<key-column name="CATALOG" jdbc-type="INTEGER"
+				type="integer" />
+		</primary-key>
+	</table>
+	<table name="SYS_ROLE">
+		<primary-key>
+			<key-column name="NO" jdbc-type="INTEGER" type="integer" />
+		</primary-key>
+		<column name="CATALOG" jdbc-type="INTEGER" type="integer"></column>
+		<column name="ORG_TYPE" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="WECHAT_MEDIA">
+		<column name="MEDIA_RESOURCE" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+	</table>
+	<table name="WECHAT_MESSAGE">
+		<column name="MESSAGE_MODE" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="ARTICLE_COUNT" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+	</table>
+	<table name="WORD">
+		<column name="WORD_COUNT" jdbc-type="INTEGER" type="integer"></column>
+		<column name="KEY" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="QUESTION">
+		<column name="ASK_COUNT" jdbc-type="INTEGER" type="integer"></column>
+		<column name="QTYPE" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="ANSWER">
+		<column name="ADOPT_COUNT" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="OP_TABLE" schema="MSUJIA">
+		<column name="STATUS" type="integer" jdbc-type="INTEGER"></column>
+		<column name="ONLINE_FLAG" type="integer" jdbc-type="INTEGER"></column>
+		<column name="PASSWD_ERROR" type="integer"
+			jdbc-type="INTEGER">
+		</column>
+		<column name="SIGN_FLAG" type="integer" jdbc-type="INTEGER"></column>
+	</table>
+	<table name="STORE_INFO" schema="MSUJIA">
+		<column name="DELIVERY_CHARGES" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="FLAG_FALL_PRICE" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="DELIVERY_TIME" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="ON_LINE" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="STORE_COMM_INFO" schema="MSUJIA">
+		<column name="PRICE" jdbc-type="DOUBLE" type="double"></column>
+		<column name="PREFERENTIAL_PRICE" jdbc-type="DOUBLE"
+			type="double">
+		</column>
+		<column name="ONHAND" jdbc-type="INTEGER" type="integer"></column>
+		<column name="ON_SHELVES" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="STORE_CLASSIFICATION_INFO" schema="MSUJIA">
+		<column name="CL_LEVEL" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="ORDER_INFO" schema="MSUJIA">
+		<column name="ORDER_TOTAL" jdbc-type="DOUBLE" type="double"></column>
+		<column name="DELIVERY_CHARGES" jdbc-type="DOUBLE"
+			type="double">
+		</column>
+		<column name="DELIVERY_TIME" jdbc-type="INTEGER"
+			type="integer">
+		</column>
+		<column name="STATUS" jdbc-type="INTEGER" type="integer"></column>
+	</table>
+	<table name="ORDER_DETAIL_INFO" schema="MSUJIA">
+		<column name="NUM" jdbc-type="INTEGER" type="integer"></column>
+		<column name="SUB_TOTAL" jdbc-type="DOUBLE" type="double"></column>
+	</table>
+</hibernate-reverse-engineering>

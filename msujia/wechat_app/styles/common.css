@@ -1,0 +1,168 @@
+/*
+-----------------------------------------------------------------------------------
+重新定义html标签样式，会直接作用于相应的标签，不需要通过标签的class属性调用
+-----------------------------------------------------------------------------------
+*/
+
+
+body{
+	font-size: 13px;	
+	color: #000000;
+}
+table{
+	font-size: 13px;	
+	color: #000000;
+}
+td {
+	font-size: 13px;
+	color: #000000;	
+}
+textarea{
+	font-size: 13px;
+	color: #000000;	
+}
+a {
+	font-size: 13px; text-decoration: underline;
+}
+a:link {
+	color: #3366cc
+}
+a:visited {
+	color: #3366cc
+}
+a:active {
+	color: #990000
+}
+a:hover {
+	left: 1px; color: #ff9900; position: relative; top: 1px
+}
+
+/*
+-----------------------------------------------------------------------------------
+自定义样式，在相应的标签中需要通过标签的class属性调用
+-----------------------------------------------------------------------------------
+*/
+
+
+.pane{  
+	font-size: 13px;
+	border: 1px solid #7788aa;
+	height:21px;
+	width:180px;
+}
+.paneGray{
+	font-size: 13px;
+	border: 1px solid #999999;
+	height:21px;
+	color:#999999;
+	width:180px;
+}
+.graySpan{
+	color:#999999;
+}
+.redSpan{
+	color:red;
+}
+.paneGray_auto{
+	font-size: 13px;
+	border: 1px solid #999999;
+	height:21px;
+	color:#999999;
+	width:153px;
+}
+.radio{
+	height:12px;
+}
+.checkbox{
+	height:20px;
+}
+/*
+.button{
+  width:62px; border-left: #2c59aa 1px solid; border-right: #2c59aa 1px solid; border-top: #2c59aa 1px solid; border-bottom: #2c59aa 1px solid; padding-top: 2px; padding-right: 2px; padding-left: 2px; font-size: 12px; filter: progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#ffffff, endcolorstr=#c3daf5); cursor: hand; color: black;
+}
+.button_nowidth{
+  border-left: #2c59aa 1px solid; border-right: #2c59aa 1px solid; border-top: #2c59aa 1px solid; border-bottom: #2c59aa 1px solid; padding-top: 2px; padding-right: 2px; padding-left: 2px; font-size: 12px; filter: progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#ffffff, endcolorstr=#c3daf5); cursor: hand; color: black;
+}*/
+.button{
+		/*background-color: #00AAFF;*/
+		/* background-color: #9966CC; */
+		background-color: #1456A0;
+		text-align: center;
+		height: 25px;
+		width: 60px;
+		font-family: 微软雅黑;
+		font-size: 12px;
+		color: white;
+		border: 0px;
+}
+.button_nowidth{
+		/*background-color: #00AAFF;*/
+		/* background-color: #9966CC; */
+		background-color: #1456A0;
+		text-align: center;
+		height: 25px;
+		font-family: 微软雅黑;
+		font-size: 12px;
+		color: white;
+		border: 0px;
+}
+.showDate{
+  width:30px; border-left: #2c59aa 1px solid; border-right: #2c59aa 1px solid; border-top: #2c59aa 1px solid; border-bottom: #2c59aa 1px solid; padding-top: 2px; padding-right: 2px; padding-left: 2px; font-size: 12px; filter: progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#ffffff, endcolorstr=#c3daf5); cursor: hand; color: black;
+}
+.inputDateText{text-align:left;border: 1px solid #bbbbff;height:20px;width: 105px;
+}
+.table1{                            
+    background-color: #aaaaaa;
+}
+.tr1{
+	height:22px;
+	background-color: #DBE5EE;
+}
+.tr2{
+	height:22px;
+	background-color: #ffffff;    
+	font-weight:bold;
+}
+.tr3{
+	height:22px;
+	background-color: #ffffff;    
+}
+.tr4{
+	height:22px;
+	background-color: #eeeeee;    
+}
+.tr5{
+	height:22px;
+	background-color: #DBE5EE;
+	font-weight:bold;
+}
+.tr6{
+	height:22px;
+	/*background-color: #9966CC;*/
+	/* background-color: #CC99FF; */
+	background-color: #809FFE;
+}
+.trAdd{
+	height:22px;
+	background-color: #FFEC8B;
+}
+.td1{
+	height:22px;
+	background-color: #E8EFF7;    
+}
+.td2{
+	height:22px;
+	background-color: #ffffff;    
+}
+.onmouseover{background-color: #DBE5EE;
+}
+.onmouseout{background-color: #ffffff;
+}
+.onmousedown{
+	background-color: #B1CEE8;
+}
+.bigBold{
+	font-size: 15px;
+	font-weight: bold;
+	color: 	#BBBB00;
+}
