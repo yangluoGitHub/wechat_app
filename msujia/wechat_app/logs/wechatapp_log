@@ -1190,3 +1190,50 @@ Caused by: java.sql.SQLException: Io 异常: The Network Adapter could not establi
 2015-04-24 10:31:57 [admin1] [com.weili.wechat.web.login.LoginController]-[INFO] 返回码=[0] 返回信息=[登录成功!]
 2015-04-24 10:31:57 [admin1] [com.weili.wechat.common.UserCounterListener]-[INFO] User Count: 3
 2015-04-24 10:31:57 [admin1] [com.weili.wechat.web.login.SessionController]-[INFO] userAccount: [admin1] 
+2015-04-24 10:49:40 [] [org.springframework.web.context.ContextLoader]-[INFO] Root WebApplicationContext: initialization started
+2015-04-24 10:49:41 [] [org.springframework.web.context.support.XmlWebApplicationContext]-[INFO] Refreshing Root WebApplicationContext: startup date [Fri Apr 24 10:49:41 CST 2015]; root of context hierarchy
+2015-04-24 10:49:41 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/common.xml]
+2015-04-24 10:49:41 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/data.xml]
+2015-04-24 10:49:41 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
+2015-04-24 10:49:42 [] [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]-[INFO] Loading properties file from ServletContext resource [/WEB-INF/cfg.properties]
+2015-04-24 10:49:42 [] [org.springframework.beans.factory.support.DefaultListableBeanFactory]-[INFO] Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@55e39682: defining beans [propertyConfigurer,jdbcUtil,dataSource,sessionFactory,commonData,logAuditDAO,roleDAO,menuDAO,buttonDAO,userDAO,operateDAO,moduleDAO,auditDAO,nameDAO,logAudit,audit,logAspectTarget,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,org.springframework.aop.aspectj.AspectJPointcutAdvisor#0,businessService,txAdvice,loginService,sysParamService,sysRoleService,auditService,roleService,userService,logAuditService,getResource,basicQryService,sysAreaService,httpClientTools,storeInfoService,storeCommClassificationInfoService,storeCommInfoService,storeClassificationService]; root of factory hierarchy
+2015-04-24 10:49:49 [] [com.alibaba.druid.pool.DruidDataSource]-[INFO] {dataSource-1} inited
+2015-04-24 10:49:50 [] [org.springframework.orm.hibernate3.LocalSessionFactoryBean]-[INFO] Building new Hibernate SessionFactory
+2015-04-24 10:49:51 [] [org.springframework.orm.hibernate3.HibernateTransactionManager]-[INFO] Using DataSource [{
+	CreateTime:"2015-04-24 10:49:43",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:1,
+	ConnectCount:1,
+	Connections:[
+		{ID:257201465, ConnectTime:"2015-04-24 10:49:49", UseCount:1, LastActiveTime:"2015-04-24 10:49:50"}
+	]
+}
+
+[
+	{
+	ID:257201465, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+2015-04-24 10:49:52 [] [org.springframework.web.context.ContextLoader]-[INFO] Root WebApplicationContext: initialization completed in 11581 ms
+2015-04-24 10:49:52 [] [com.weili.wechat.common.SystemParamLoader]-[INFO] 初始化系统参数
+2015-04-24 10:49:52 [] [com.weili.wechat.common.SystemParamLoader]-[INFO] SysParamTab size = [4]
+2015-04-24 10:49:53 [] [org.springframework.web.servlet.DispatcherServlet]-[INFO] FrameworkServlet 'wechat': initialization started
+2015-04-24 10:49:53 [] [org.springframework.web.context.support.XmlWebApplicationContext]-[INFO] Refreshing WebApplicationContext for namespace 'wechat-servlet': startup date [Fri Apr 24 10:49:53 CST 2015]; parent: Root WebApplicationContext
+2015-04-24 10:49:53 [] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader]-[INFO] Loading XML bean definitions from ServletContext resource [/WEB-INF/wechat-servlet.xml]
+2015-04-24 10:49:53 [] [org.springframework.beans.factory.support.DefaultListableBeanFactory]-[INFO] Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7c9c8a7b: defining beans [mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.view.ContentNegotiatingViewResolver#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,methodNameResolver,exceptionResolver,multipartResolver,timeoutInterceptor,authInterceptor,requestInterceptor,logInterceptor,simpleUrlMapping,loginController,userController,roleController,sysParamController,staticPagesController,storeInfoController,storeCommClassificationInfoController,storeCommInfoController,storeClassificationController]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@55e39682
+2015-04-24 10:49:54 [] [org.springframework.oxm.jaxb.Jaxb2Marshaller]-[INFO] Creating JAXBContext by scanning packages [documentLoader.domain]
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/param.do] onto handler 'sysParamController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeCommInfo.do] onto handler 'storeCommInfoController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeInfo.do] onto handler 'storeInfoController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/user.do] onto handler 'userController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/staticPages.do] onto handler 'staticPagesController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/role.do] onto handler 'roleController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeClassification.do] onto handler 'storeClassificationController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/storeCommClassificationInfo.do] onto handler 'storeCommClassificationInfoController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]-[INFO] Mapped URL path [/*/login.do] onto handler 'loginController'
+2015-04-24 10:49:54 [] [org.springframework.web.servlet.DispatcherServlet]-[INFO] FrameworkServlet 'wechat': initialization completed in 1444 ms
