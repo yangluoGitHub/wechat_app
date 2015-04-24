@@ -19,6 +19,16 @@ public class StoreInfoVO {
 	private Integer flagFallPrice;
 	private Integer deliveryTime;
 	private Integer onLine;
+	
+	//add by yangluo since 20150424
+	private String storeLogo;
+	private String storePic;
+	private String storeLongitude;
+	private String storeLatitude;
+	private Integer notifySet;
+	
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -116,4 +126,35 @@ public class StoreInfoVO {
 	public void setOnLine(Integer onLine) {
 		this.onLine = onLine;
 	}
+	public String getStoreLogo() {
+		return storeLogo;
+	}
+	public void setStoreLogo(String storeLogo) {
+		this.storeLogo = storeLogo;
+	}
+	public String getStorePic() {
+		return storePic;
+	}
+	public void setStorePic(String storePic) {
+		this.storePic = storePic;
+	}
+	public String getStoreLongitude() {
+		return storeLongitude;
+	}
+	public void setStoreLongitude(String storeLongitude) {
+		this.storeLongitude = storeLongitude;
+	}
+	public String getStoreLatitude() {
+		return storeLatitude;
+	}
+	public void setStoreLatitude(String storeLatitude) {
+		this.storeLatitude = storeLatitude;
+	}
+	public Integer getNotifySet() {
+		return notifySet;
+	}
+	public void setNotifySet(Integer notifySet) {
+		this.notifySet = notifySet;
+	}
+	
 }

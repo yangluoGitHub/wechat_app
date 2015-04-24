@@ -27,6 +27,11 @@ public class StoreInfo implements java.io.Serializable {
 	private Integer flagFallPrice;
 	private Integer deliveryTime;
 	private Integer onLine;
+	private String storeLogo;
+	private String storePic;
+	private String storeLongitude;
+	private String storeLatitude;
+	private Integer notifySet;
 	private Set storeCommInfos = new HashSet(0);
 	private Set storeCommClassificationInfos = new HashSet(0);
 
@@ -43,7 +48,9 @@ public class StoreInfo implements java.io.Serializable {
 			String storeNo, String storeName, String phone, String address,
 			String passwd, String businessHours, String serviceRadius,
 			String deliveryArea, Integer deliveryCharges,
-			Integer flagFallPrice, Integer deliveryTime, Integer onLine) {
+			Integer flagFallPrice, Integer deliveryTime, Integer onLine,
+			String storeLogo, String storeLongitude, String storeLatitude,
+			Integer notifySet) {
 		this.id = id;
 		this.storeClassificationInfoBySecClassification1 = storeClassificationInfoBySecClassification1;
 		this.storeNo = storeNo;
@@ -58,6 +65,10 @@ public class StoreInfo implements java.io.Serializable {
 		this.flagFallPrice = flagFallPrice;
 		this.deliveryTime = deliveryTime;
 		this.onLine = onLine;
+		this.storeLogo = storeLogo;
+		this.storeLongitude = storeLongitude;
+		this.storeLatitude = storeLatitude;
+		this.notifySet = notifySet;
 	}
 
 	/** full constructor */
@@ -70,7 +81,9 @@ public class StoreInfo implements java.io.Serializable {
 			String passwd, String businessHours, String serviceRadius,
 			String deliveryArea, Integer deliveryCharges,
 			Integer flagFallPrice, Integer deliveryTime, Integer onLine,
-			Set storeCommInfos, Set storeCommClassificationInfos) {
+			String storeLogo, String storePic, String storeLongitude,
+			String storeLatitude, Integer notifySet, Set storeCommInfos,
+			Set storeCommClassificationInfos) {
 		this.id = id;
 		this.storeClassificationInfoBySecClassification1 = storeClassificationInfoBySecClassification1;
 		this.storeClassificationInfoBySecClassification3 = storeClassificationInfoBySecClassification3;
@@ -87,6 +100,11 @@ public class StoreInfo implements java.io.Serializable {
 		this.flagFallPrice = flagFallPrice;
 		this.deliveryTime = deliveryTime;
 		this.onLine = onLine;
+		this.storeLogo = storeLogo;
+		this.storePic = storePic;
+		this.storeLongitude = storeLongitude;
+		this.storeLatitude = storeLatitude;
+		this.notifySet = notifySet;
 		this.storeCommInfos = storeCommInfos;
 		this.storeCommClassificationInfos = storeCommClassificationInfos;
 	}
@@ -222,6 +240,46 @@ public class StoreInfo implements java.io.Serializable {
 
 	public void setOnLine(Integer onLine) {
 		this.onLine = onLine;
+	}
+
+	public String getStoreLogo() {
+		return this.storeLogo;
+	}
+
+	public void setStoreLogo(String storeLogo) {
+		this.storeLogo = storeLogo;
+	}
+
+	public String getStorePic() {
+		return this.storePic;
+	}
+
+	public void setStorePic(String storePic) {
+		this.storePic = storePic;
+	}
+
+	public String getStoreLongitude() {
+		return this.storeLongitude;
+	}
+
+	public void setStoreLongitude(String storeLongitude) {
+		this.storeLongitude = storeLongitude;
+	}
+
+	public String getStoreLatitude() {
+		return this.storeLatitude;
+	}
+
+	public void setStoreLatitude(String storeLatitude) {
+		this.storeLatitude = storeLatitude;
+	}
+
+	public Integer getNotifySet() {
+		return this.notifySet;
+	}
+
+	public void setNotifySet(Integer notifySet) {
+		this.notifySet = notifySet;
 	}
 
 	public Set getStoreCommInfos() {

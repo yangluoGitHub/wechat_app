@@ -55,5 +55,11 @@
         <property name="storeId" type="string">
             <column name="STORE_ID" length="36" />
         </property>
+        <property name="longitude" type="string">
+            <column name="LONGITUDE" length="36" />
+        </property>
+        <property name="latitude" type="string">
+            <column name="LATITUDE" length="36" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -11,7 +11,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="storeClassificationInfoBySecClassification1" class="com.weili.wechat.hibernate.StoreClassificationInfo" fetch="select">
-            <column name="SEC_CLASSIFICATION_1" length="36" not-null="true"/>
+            <column name="SEC_CLASSIFICATION_1" length="36" not-null="true" />
         </many-to-one>
         <many-to-one name="storeClassificationInfoBySecClassification3" class="com.weili.wechat.hibernate.StoreClassificationInfo" fetch="select">
             <column name="SEC_CLASSIFICATION_3" length="36" />
@@ -54,6 +54,21 @@
         </property>
         <property name="onLine" type="integer">
             <column name="ON_LINE" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="storeLogo" type="string">
+            <column name="STORE_LOGO" length="128" not-null="true" />
+        </property>
+        <property name="storePic" type="string">
+            <column name="STORE_PIC" length="128" />
+        </property>
+        <property name="storeLongitude" type="string">
+            <column name="STORE_LONGITUDE" length="36" not-null="true" />
+        </property>
+        <property name="storeLatitude" type="string">
+            <column name="STORE_LATITUDE" length="36" not-null="true" />
+        </property>
+        <property name="notifySet" type="integer">
+            <column name="NOTIFY_SET" precision="22" scale="0" not-null="true" />
         </property>
         <set name="storeCommInfos" inverse="true">
             <key>

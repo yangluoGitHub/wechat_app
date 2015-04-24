@@ -89,7 +89,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
       out.write("</head>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<body>\r\n");
+      out.write("<body onload=\"javascript:init();\">\r\n");
       out.write("<!--javascript 国际化标识符-->\r\n");
       out.write("<div id=\"javascriptI18n\">\r\n");
       out.write("<input type=\"hidden\" id=\"script.common.dateFormat\" value=\"");
@@ -148,39 +148,55 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
       out.write("\t  }\r\n");
       out.write("}\r\n");
       out.write("function mod(obj){\r\n");
-      out.write("\t\talert(\"ok\");\r\n");
-      out.write("\t\t//$.ajax({\r\n");
-      out.write("\t\t//\turl : \"storeInfo.do?action=qry.json\",\r\n");
-      out.write("\t\t//\ttype : \"POST\",\r\n");
-      out.write("\t\t//\tdata : {\r\n");
-      out.write("\t\t//\t\tid : \"sss\"\r\n");
-      out.write("\t\t//\t},\r\n");
-      out.write("\t\t//\tsuccess : function(respTxt) {\r\n");
-      out.write("\t\t//\t\t\t\t\t\t\r\n");
-      out.write("\t\t//\t}\r\n");
-      out.write("\t    //});\t\r\n");
-      out.write("\t    $.ajax({  \r\n");
-      out.write("        url : \"storeInfo.do?action=qryM\",  \r\n");
-      out.write("        type : \"GET\",\r\n");
-      out.write("       // contentType : \"application/json\",//application/xml  \r\n");
-      out.write("       // processData : true,//contentType为xml时，些值为false  \r\n");
-      out.write("        //dataType : \"json\",//json--返回json数据类型；xml--返回xml  \r\n");
-      out.write("        data : {  \r\n");
-      out.write("            storeNo : \"\",\r\n");
-      out.write("            storeName : \"\"\r\n");
-      out.write("        },  \r\n");
-      out.write("        success : function(data) { \r\n");
-      out.write("            document.write(data[0].storeName);  \r\n");
-      out.write("        },  \r\n");
-      out.write("        error : function(e) {  \r\n");
-      out.write("            document.write('error');  \r\n");
-      out.write("        }  \r\n");
-      out.write("    }); \t\t\t\r\n");
-      out.write("\t  //window.location=\"storeInfo.do?action=modPage&id=\"+obj;\r\n");
+      out.write("\t  window.location=\"storeInfo.do?action=modPage&id=\"+obj;\r\n");
       out.write("}\r\n");
       out.write("function detail(obj){\r\n");
       out.write("\t  window.location=\"storeInfo.do?action=detail&id=\"+obj;\r\n");
       out.write("}\r\n");
+      out.write("\r\n");
+      out.write("//将imageDest图片的大小按比例缩放,适合显示在宽W和高H的区域内 \r\n");
+      out.write("\tfunction ResizeImage(imageDest, W, H) {\r\n");
+      out.write("\t\t//显示框宽度W,高度H \r\n");
+      out.write("\t\tvar image = new Image();\r\n");
+      out.write("\t\timage.src = imageDest.src;\r\n");
+      out.write("\t\tif (image.width > 0 && image.height > 0) {\r\n");
+      out.write("\t\t\t//比较纵横比 \r\n");
+      out.write("\t\t\tif (image.width / image.height >= W / H)//相对显示框：宽>高 \r\n");
+      out.write("\t\t\t{\r\n");
+      out.write("\t\t\t\tif (image.width > W) //宽度大于显示框宽度W，应压缩高度 \r\n");
+      out.write("\t\t\t\t{\r\n");
+      out.write("\t\t\t\t\timageDest.width = W;\r\n");
+      out.write("\t\t\t\t\timageDest.height = (image.height * W) / image.width;\r\n");
+      out.write("\t\t\t\t} else //宽度少于或等于显示框宽度W，图片完全显示 \r\n");
+      out.write("\t\t\t\t{\r\n");
+      out.write("\t\t\t\t\timageDest.width = image.width;\r\n");
+      out.write("\t\t\t\t\timageDest.height = image.height;\r\n");
+      out.write("\t\t\t\t}\r\n");
+      out.write("\t\t\t} else//同理 \r\n");
+      out.write("\t\t\t{\r\n");
+      out.write("\t\t\t\tif (image.height > H) {\r\n");
+      out.write("\t\t\t\t\timageDest.height = H;\r\n");
+      out.write("\t\t\t\t\timageDest.width = (image.width * H) / image.height;\r\n");
+      out.write("\t\t\t\t} else {\r\n");
+      out.write("\t\t\t\t\timageDest.width = image.width;\r\n");
+      out.write("\t\t\t\t\timageDest.height = image.height;\r\n");
+      out.write("\t\t\t\t}\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t}\r\n");
+      out.write("\t\r\n");
+      out.write("\t//将页面内所有指定id的图片按比例缩放 \r\n");
+      out.write("\tfunction RsizeAllImageById(id, W, H) {\r\n");
+      out.write("\t\tvar imgs = document.getElementsByTagName(\"img\");\r\n");
+      out.write("\t\tfor ( var i = 0; i < imgs.length; i++) {\r\n");
+      out.write("\t\t\tif (imgs[i].id == id) {\r\n");
+      out.write("\t\t\t\tResizeImage(imgs[i], W, H);\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t}\r\n");
+      out.write("\tfunction init() { \r\n");
+      out.write("\t\tRsizeAllImageById(\"pictureLink\", 150, 113); \r\n");
+      out.write("\t}\r\n");
       out.write("function go(){\r\n");
       out.write("\t\t\tvar pageNum = document.getElementById('curPages').value;\r\n");
       out.write("\t\t\t//alert(pageNum);//获取跳转页码\r\n");
@@ -315,21 +331,21 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
       org.displaytag.tags.el.ELTableTag _jspx_th_display_005ftable_005f0 = (org.displaytag.tags.el.ELTableTag) _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005frequestURI_005fpagesize_005fname_005fid_005fclass_005fcellspacing_005fcellpadding.get(org.displaytag.tags.el.ELTableTag.class);
       _jspx_th_display_005ftable_005f0.setPageContext(_jspx_page_context);
       _jspx_th_display_005ftable_005f0.setParent(null);
-      // /pages/manage/store_info_qry.jsp(179,0) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setName("requestScope.storeInfoList");
-      // /pages/manage/store_info_qry.jsp(179,0) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = id type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setUid("storInfo");
-      // /pages/manage/store_info_qry.jsp(179,0) name = requestURI type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = requestURI type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setRequestURI("storeInfo.do");
-      // /pages/manage/store_info_qry.jsp(179,0) name = cellspacing type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = cellspacing type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setCellspacing("1");
-      // /pages/manage/store_info_qry.jsp(179,0) name = cellpadding type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = cellpadding type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setCellpadding("3");
-      // /pages/manage/store_info_qry.jsp(179,0) name = class type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = class type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setClass("table1");
-      // /pages/manage/store_info_qry.jsp(179,0) name = style type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = style type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setStyle("word-break:break-all");
-      // /pages/manage/store_info_qry.jsp(179,0) name = pagesize type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+      // /pages/manage/store_info_qry.jsp(195,0) name = pagesize type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
       _jspx_th_display_005ftable_005f0.setPagesize("15");
       int _jspx_eval_display_005ftable_005f0 = _jspx_th_display_005ftable_005f0.doStartTag();
       if (_jspx_eval_display_005ftable_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -346,7 +362,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
           org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f0 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
           _jspx_th_display_005fcolumn_005f0.setPageContext(_jspx_page_context);
           _jspx_th_display_005fcolumn_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-          // /pages/manage/store_info_qry.jsp(180,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+          // /pages/manage/store_info_qry.jsp(196,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
           _jspx_th_display_005fcolumn_005f0.setTitle(resource.srcStr("Main.op"));
           int _jspx_eval_display_005fcolumn_005f0 = _jspx_th_display_005fcolumn_005f0.doStartTag();
           if (_jspx_eval_display_005fcolumn_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -387,19 +403,23 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
           out.write("    ");
           if (_jspx_meth_display_005fcolumn_005f1(_jspx_th_display_005ftable_005f0, _jspx_page_context))
             return;
+          out.write("\r\n");
+          out.write("    ");
+          if (_jspx_meth_display_005fcolumn_005f2(_jspx_th_display_005ftable_005f0, _jspx_page_context))
+            return;
           out.write('\r');
           out.write('\n');
           out.write('	');
-          if (_jspx_meth_display_005fcolumn_005f2(_jspx_th_display_005ftable_005f0, _jspx_page_context))
+          if (_jspx_meth_display_005fcolumn_005f3(_jspx_th_display_005ftable_005f0, _jspx_page_context))
             return;
           out.write("\t\r\n");
           out.write("\t");
-          if (_jspx_meth_display_005fcolumn_005f3(_jspx_th_display_005ftable_005f0, _jspx_page_context))
+          if (_jspx_meth_display_005fcolumn_005f4(_jspx_th_display_005ftable_005f0, _jspx_page_context))
             return;
           out.write('\r');
           out.write('\n');
           out.write('	');
-          if (_jspx_meth_display_005fcolumn_005f4(_jspx_th_display_005ftable_005f0, _jspx_page_context))
+          if (_jspx_meth_display_005fcolumn_005f5(_jspx_th_display_005ftable_005f0, _jspx_page_context))
             return;
           out.write('\r');
           out.write('\n');
@@ -444,7 +464,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent(null);
-    // /pages/manage/store_info_qry.jsp(156,80) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(172,80) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storeName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -463,7 +483,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent(null);
-    // /pages/manage/store_info_qry.jsp(159,78) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(175,78) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storeNo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -482,7 +502,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f0);
-    // /pages/manage/store_info_qry.jsp(181,28) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(197,28) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -501,7 +521,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f0);
-    // /pages/manage/store_info_qry.jsp(182,34) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(198,34) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -520,7 +540,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f1 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f1.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/store_info_qry.jsp(184,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(200,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_display_005fcolumn_005f1.setTitle("门店名称");
     int _jspx_eval_display_005fcolumn_005f1 = _jspx_th_display_005fcolumn_005f1.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -565,7 +585,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f1);
-    // /pages/manage/store_info_qry.jsp(186,34) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(202,34) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -584,7 +604,7 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f1);
-    // /pages/manage/store_info_qry.jsp(186,69) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /pages/manage/store_info_qry.jsp(202,69) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f5 = _jspx_th_c_005fout_005f5.doStartTag();
     if (_jspx_th_c_005fout_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -603,8 +623,8 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f2 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f2.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/store_info_qry.jsp(189,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_display_005fcolumn_005f2.setTitle("门店号");
+    // /pages/manage/store_info_qry.jsp(205,4) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_display_005fcolumn_005f2.setTitle("门店LOGO");
     int _jspx_eval_display_005fcolumn_005f2 = _jspx_th_display_005fcolumn_005f2.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       if (_jspx_eval_display_005fcolumn_005f2 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
@@ -614,13 +634,14 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
       }
       do {
         out.write("\r\n");
-        out.write("\t\t<span style=\"align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">\r\n");
-        out.write("\t\t\t");
-        if (_jspx_meth_c_005fout_005f6(_jspx_th_display_005fcolumn_005f2, _jspx_page_context))
-          return true;
-        out.write("\r\n");
-        out.write("\t\t</span>\t\r\n");
-        out.write("\t");
+        out.write("    \t<span style=\"align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">\r\n");
+        out.write("    \t\t<img src=\"../");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeLogo }", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\" title=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeName}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\" name=\"storeLogo\" width=\"150\" height=\"113\" border=\"0\" id=\"storeLogo\" />\r\n");
+        out.write("    \t</span>\r\n");
+        out.write("    ");
         int evalDoAfterBody = _jspx_th_display_005fcolumn_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -637,25 +658,6 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f2, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f2);
-    // /pages/manage/store_info_qry.jsp(191,3) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeNo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
-    if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
-    return false;
-  }
-
   private boolean _jspx_meth_display_005fcolumn_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005ftable_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -664,8 +666,8 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f3 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f3.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/store_info_qry.jsp(194,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_display_005fcolumn_005f3.setTitle("门店分类");
+    // /pages/manage/store_info_qry.jsp(210,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_display_005fcolumn_005f3.setTitle("门店号");
     int _jspx_eval_display_005fcolumn_005f3 = _jspx_th_display_005fcolumn_005f3.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       if (_jspx_eval_display_005fcolumn_005f3 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
@@ -676,14 +678,11 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
       do {
         out.write("\r\n");
         out.write("\t\t<span style=\"align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">\r\n");
-        out.write("\t\t\t<a href=\"javascript:detail('");
-        if (_jspx_meth_c_005fout_005f7(_jspx_th_display_005fcolumn_005f3, _jspx_page_context))
-          return true;
-        out.write("')\">");
-        if (_jspx_meth_c_005fout_005f8(_jspx_th_display_005fcolumn_005f3, _jspx_page_context))
+        out.write("\t\t\t");
+        if (_jspx_meth_c_005fout_005f6(_jspx_th_display_005fcolumn_005f3, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t</span>\r\n");
+        out.write("\t\t</span>\t\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_display_005fcolumn_005f3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -701,41 +700,22 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f3, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005fout_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f3, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f3);
-    // /pages/manage/store_info_qry.jsp(196,31) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeClassificationInfoBySecClassification1.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
-    if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f7);
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f3);
+    // /pages/manage/store_info_qry.jsp(212,3) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeNo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
+    if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f7);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fout_005f8(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f3, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f8.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f3);
-    // /pages/manage/store_info_qry.jsp(196,110) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeClassificationInfoBySecClassification1.clName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f8 = _jspx_th_c_005fout_005f8.doStartTag();
-    if (_jspx_th_c_005fout_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f8);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f8);
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
     return false;
   }
 
@@ -747,8 +727,8 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f4 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
     _jspx_th_display_005fcolumn_005f4.setPageContext(_jspx_page_context);
     _jspx_th_display_005fcolumn_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
-    // /pages/manage/store_info_qry.jsp(199,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_display_005fcolumn_005f4.setTitle("门店地址");
+    // /pages/manage/store_info_qry.jsp(215,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_display_005fcolumn_005f4.setTitle("门店分类");
     int _jspx_eval_display_005fcolumn_005f4 = _jspx_th_display_005fcolumn_005f4.doStartTag();
     if (_jspx_eval_display_005fcolumn_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       if (_jspx_eval_display_005fcolumn_005f4 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
@@ -759,11 +739,14 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
       do {
         out.write("\r\n");
         out.write("\t\t<span style=\"align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">\r\n");
-        out.write("\t\t\t");
-        if (_jspx_meth_c_005fout_005f9(_jspx_th_display_005fcolumn_005f4, _jspx_page_context))
+        out.write("\t\t\t<a href=\"javascript:detail('");
+        if (_jspx_meth_c_005fout_005f7(_jspx_th_display_005fcolumn_005f4, _jspx_page_context))
+          return true;
+        out.write("')\">");
+        if (_jspx_meth_c_005fout_005f8(_jspx_th_display_005fcolumn_005f4, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t</span>\t\r\n");
+        out.write("\t\t</span>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_display_005fcolumn_005f4.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -781,15 +764,95 @@ public final class store_005finfo_005fqry_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f9(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f4, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005fout_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f4, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f4);
+    // /pages/manage/store_info_qry.jsp(217,31) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeClassificationInfoBySecClassification1.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
+    if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f7);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f7);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f8(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f4, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f8.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f4);
+    // /pages/manage/store_info_qry.jsp(217,110) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.storeClassificationInfoBySecClassification1.clName}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f8 = _jspx_th_c_005fout_005f8.doStartTag();
+    if (_jspx_th_c_005fout_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f8);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f8);
+    return false;
+  }
+
+  private boolean _jspx_meth_display_005fcolumn_005f5(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005ftable_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  display:column
+    org.displaytag.tags.el.ELColumnTag _jspx_th_display_005fcolumn_005f5 = (org.displaytag.tags.el.ELColumnTag) _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.get(org.displaytag.tags.el.ELColumnTag.class);
+    _jspx_th_display_005fcolumn_005f5.setPageContext(_jspx_page_context);
+    _jspx_th_display_005fcolumn_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005ftable_005f0);
+    // /pages/manage/store_info_qry.jsp(220,1) name = title type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_display_005fcolumn_005f5.setTitle("门店地址");
+    int _jspx_eval_display_005fcolumn_005f5 = _jspx_th_display_005fcolumn_005f5.doStartTag();
+    if (_jspx_eval_display_005fcolumn_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      if (_jspx_eval_display_005fcolumn_005f5 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+        out = _jspx_page_context.pushBody();
+        _jspx_th_display_005fcolumn_005f5.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+        _jspx_th_display_005fcolumn_005f5.doInitBody();
+      }
+      do {
+        out.write("\r\n");
+        out.write("\t\t<span style=\"align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">\r\n");
+        out.write("\t\t\t");
+        if (_jspx_meth_c_005fout_005f9(_jspx_th_display_005fcolumn_005f5, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("\t\t</span>\t\r\n");
+        out.write("\t");
+        int evalDoAfterBody = _jspx_th_display_005fcolumn_005f5.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+      if (_jspx_eval_display_005fcolumn_005f5 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+        out = _jspx_page_context.popBody();
+      }
+    }
+    if (_jspx_th_display_005fcolumn_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.reuse(_jspx_th_display_005fcolumn_005f5);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fdisplay_005fcolumn_0026_005ftitle.reuse(_jspx_th_display_005fcolumn_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f9(javax.servlet.jsp.tagext.JspTag _jspx_th_display_005fcolumn_005f5, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:out
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f9 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f9.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f4);
-    // /pages/manage/store_info_qry.jsp(201,3) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_display_005fcolumn_005f5);
+    // /pages/manage/store_info_qry.jsp(222,3) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${storInfo.address}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f9 = _jspx_th_c_005fout_005f9.doStartTag();
     if (_jspx_th_c_005fout_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

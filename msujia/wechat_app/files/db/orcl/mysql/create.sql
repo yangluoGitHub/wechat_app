@@ -64,6 +64,8 @@ create table MSUJIA.OP_TABLE
    PASSWD_ERROR         int not null default 0,
    SIGN_FLAG            int not null default 0,
    STORE_ID             varchar(36),
+   LONGITUDE            varchar(36),
+   LATITUDE             varchar(36),
    primary key (NO)
 );
 
@@ -170,6 +172,11 @@ create table MSUJIA.STORE_INFO
    FLAG_FALL_PRICE      int not null comment '起送价/元',
    DELIVERY_TIME        int not null comment '送达(分钟)',
    ON_LINE              int not null comment '是否显示',
+   STORE_LOGO			varchar(128) not null comment '门店LOGO',
+   STORE_PIC            varchar(128) comment '门店实景',
+   STORE_LONGITUDE      varchar(36) not null comment '门店经度',
+   STORE_LATITUDE       varchar(36) not null comment '门店纬度',
+   NOTIFY_SET           int not null comment '通知方式',
    primary key (ID),
    key UK_STORE_NO (STORE_NO)
 );

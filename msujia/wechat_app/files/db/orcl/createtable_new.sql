@@ -42,7 +42,9 @@ create table OP_TABLE
   PASSWD_EXPIRATION VARCHAR2(10),
   PASSWD_ERROR      INTEGER default 0 not null,
   SIGN_FLAG         INTEGER default 0 not null,
-  STORE_ID			VARCHAR2(36)
+  STORE_ID			VARCHAR2(36),
+  LONGITUDE         VARCHAR2(36),
+  LATITUDE          VARCHAR2(36)
 )
 tablespace MSUJIA_SPACE;
 alter table OP_TABLE
@@ -393,7 +395,12 @@ create table STORE_INFO
  DELIVERY_CHARGES		INTEGER not null,
  FLAG_FALL_PRICE      INTEGER not null,
  DELIVERY_TIME      INTEGER not null,
- ON_LINE            INTEGER not null
+ ON_LINE            INTEGER not null,
+ STORE_LOGO         VARCHAR2(128) not null,
+ STORE_PIC           VARCHAR2(128),
+ STORE_LONGITUDE     VARCHAR2(36) not null,
+ STORE_LATITUDE      VARCHAR2(36) not null,
+ NOTIFY_SET          INTEGER not null
 )
 tablespace MSUJIA_SPACE;
 comment on table STORE_INFO
@@ -430,6 +437,16 @@ comment on column STORE_INFO.DELIVERY_TIME
   is '送达(分钟)';
 comment on column STORE_INFO.ON_LINE
   is '是否显示';
+comment on column STORE_INFO.STORE_LOGO
+  is '门店logo';
+comment on column STORE_INFO.STORE_PIC
+  is '门店实景';
+comment on column STORE_INFO.STORE_LONGITUDE
+  is '门店经度';
+comment on column STORE_INFO.STORE_LATITUDE
+  is '门店纬度';
+comment on column STORE_INFO.NOTIFY_SET
+  is '通知设置';
 alter table STORE_INFO
 	add constraint PK_STORE_INFO primary key(ID)
 	using index tablespace IDXPRIMARY; 

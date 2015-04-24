@@ -181,6 +181,19 @@ public class StoreInfoServiceImpl extends RetInfo implements StoreInfoService {
 		 sInfo.setPasswd(vo.getPasswd());
 		 sInfo.setPhone(vo.getPhone());
 		 sInfo.setServiceRadius(vo.getServiceRadius());
+		 //add by yangluo since 2015/04/24
+		 sInfo.setStoreLogo(vo.getStoreLogo());
+		 if (vo.getStorePic() != null) {
+			 sInfo.setStorePic(vo.getStorePic());
+		 }
+		 
+		 //TODO store location
+		 
+		// sInfo.setStoreLongitude(vo.getStoreLongitude());
+		 sInfo.setStoreLongitude("dsadsd");
+		// sInfo.setStoreLatitude(vo.getStoreLatitude());
+		 sInfo.setStoreLatitude("dsswq");
+		 sInfo.setNotifySet(vo.getNotifySet());
 		 
 		 return sInfo;
 		 
@@ -229,6 +242,12 @@ public class StoreInfoServiceImpl extends RetInfo implements StoreInfoService {
 			 clVO3.setClName(storeClInfo.getClName());
 			 vo.setStoreClVO3(clVO3);
 		 }
+		 
+		 vo.setStoreLogo(sInfo.getStoreLogo());
+		 vo.setStoreLongitude(sInfo.getStoreLongitude());
+		 vo.setStoreLatitude(sInfo.getStoreLatitude());
+		 vo.setStorePic(sInfo.getStorePic());
+		 vo.setNotifySet(sInfo.getNotifySet());
 		 return vo;
 	 }
 	 

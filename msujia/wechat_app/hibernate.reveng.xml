@@ -205,6 +205,7 @@
 			type="integer">
 		</column>
 		<column name="ON_LINE" jdbc-type="INTEGER" type="integer"></column>
+		<column name="NOTIFY_SET" jdbc-type="INTEGER" type="integer"></column>
 	</table>
 	<table name="STORE_COMM_INFO" schema="MSUJIA">
 		<column name="PRICE" jdbc-type="DOUBLE" type="double"></column>

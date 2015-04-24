@@ -50,9 +50,10 @@ function checkForm(){
 </script>
 <br>
 
-<form name="form1" method="post" action="storeInfo.do?action=mod">
+<form name="form1" method="post" action="storeInfo.do?action=mod" enctype="multipart/form-data">
 <table id="infoTable" align="center" width="650" border="0" cellspacing="1" cellpadding="5" class="table1" >
 <input type="hidden" id="id" name="id" value='${sInfoVO.id }'/>
+<input type="hidden" id="oldStoreLogo" name="oldStoreLogo" value='${sInfoVO.storeLogo }'/>
  <tr class="tr1">
     <td nowrap colspan="2" align="center">修改门店信息</td>
   </tr>  
@@ -62,7 +63,7 @@ function checkForm(){
   </tr> 
   <tr class="tr3">
     <td nowrap>门店编号：</td>
-    <td nowrap><input type="text" name="storeNo" maxlength="64" value="${sInfoVO.storeNo }">&nbsp;*字母和数字、下划线组成，不超过60字符</td> 
+    <td nowrap><input type="text" name="storeNo" maxlength="64" value="${sInfoVO.storeNo }" readonly="readonly">&nbsp;*字母和数字、下划线组成，不超过60字符</td> 
   </tr>
   <tr class="tr3">
     <td nowrap>门店电话：</td>
@@ -113,6 +114,9 @@ function checkForm(){
     <td nowrap>门店地址：</td>
     <td nowrap><input type="text" name="address"  maxlength="200" value="${sInfoVO.address }">&nbsp;*</td> 
   </tr>
+  <tr class="tr3">
+    <td nowrap>门店LOGO：</td>
+    <td nowrap><input type="file" name="storeLogo" id="storeLogo">&nbsp;*.png.jpg</td> 
   </tr>
     <tr class="tr3">
     <td nowrap>是否启用：</td>

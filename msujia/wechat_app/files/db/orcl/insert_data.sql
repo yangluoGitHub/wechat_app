@@ -482,6 +482,6 @@ insert into SYS_PARAM (LOGIC_ID, CATALOG, PARAM_NAME, PARAM_VALUE, STATEMENT, DE
 values ('10018', 1, 'passwdmaxCount', '5', '密码重试最大次数', null);
 commit;
 --人员信息表
-insert into OP_TABLE (NO, PASSWD, NAME, STATUS, ONLINE_FLAG, ROLE, PHONE, MOBILE, EMAIL, PHOTO, LOGIN_IP, LOGIN_TIME, PASSWD_EXPIRATION, PASSWD_ERROR, SIGN_FLAG, STORE_ID)
-values ('admin1', '3ac751c1478699664bcc11b5efc04fac', '超级管理员1', 1, 0, 10001, null, null, null, null, '0:0:0:0:0:0:0:1', '2012-12-30 12:03:01', '2900-01-01', 0, 1, null);
+insert into OP_TABLE (NO, PASSWD, NAME, STATUS, ONLINE_FLAG, ROLE, PHONE, MOBILE, EMAIL, PHOTO, LOGIN_IP, LOGIN_TIME, PASSWD_EXPIRATION, PASSWD_ERROR, SIGN_FLAG, STORE_ID, LONGITUDE, LATITUDE)
+values ('admin1', '3ac751c1478699664bcc11b5efc04fac', '超级管理员1', 1, 0, 10001, null, null, null, null, '0:0:0:0:0:0:0:1', '2012-12-30 12:03:01', '2900-01-01', 0, 1, null, null, null);
 commit;

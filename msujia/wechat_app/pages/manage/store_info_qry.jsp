@@ -18,7 +18,7 @@
 </head>
 
 
-<body>
+<body onload="javascript:init();">
 <!--javascript 国际化标识符-->
 <div id="javascriptI18n">
 <%@ include file="../../scripts/common.jsp" %>
@@ -39,39 +39,55 @@ function del(obj){
 	  }
 }
 function mod(obj){
-		alert("ok");
-		//$.ajax({
-		//	url : "storeInfo.do?action=qry.json",
-		//	type : "POST",
-		//	data : {
-		//		id : "sss"
-		//	},
-		//	success : function(respTxt) {
-		//						
-		//	}
-	    //});	
-	    $.ajax({  
-        url : "storeInfo.do?action=qryM",  
-        type : "GET",
-       // contentType : "application/json",//application/xml  
-       // processData : true,//contentType为xml时，些值为false  
-        //dataType : "json",//json--返回json数据类型；xml--返回xml  
-        data : {  
-            storeNo : "",
-            storeName : ""
-        },  
-        success : function(data) { 
-            document.write(data[0].storeName);  
-        },  
-        error : function(e) {  
-            document.write('error');  
-        }  
-    }); 			
-	  //window.location="storeInfo.do?action=modPage&id="+obj;
+	  window.location="storeInfo.do?action=modPage&id="+obj;
 }
 function detail(obj){
 	  window.location="storeInfo.do?action=detail&id="+obj;
 }
+
+//将imageDest图片的大小按比例缩放,适合显示在宽W和高H的区域内 
+	function ResizeImage(imageDest, W, H) {
+		//显示框宽度W,高度H 
+		var image = new Image();
+		image.src = imageDest.src;
+		if (image.width > 0 && image.height > 0) {
+			//比较纵横比 
+			if (image.width / image.height >= W / H)//相对显示框：宽>高 
+			{
+				if (image.width > W) //宽度大于显示框宽度W，应压缩高度 
+				{
+					imageDest.width = W;
+					imageDest.height = (image.height * W) / image.width;
+				} else //宽度少于或等于显示框宽度W，图片完全显示 
+				{
+					imageDest.width = image.width;
+					imageDest.height = image.height;
+				}
+			} else//同理 
+			{
+				if (image.height > H) {
+					imageDest.height = H;
+					imageDest.width = (image.width * H) / image.height;
+				} else {
+					imageDest.width = image.width;
+					imageDest.height = image.height;
+				}
+			}
+		}
+	}
+	
+	//将页面内所有指定id的图片按比例缩放 
+	function RsizeAllImageById(id, W, H) {
+		var imgs = document.getElementsByTagName("img");
+		for ( var i = 0; i < imgs.length; i++) {
+			if (imgs[i].id == id) {
+				ResizeImage(imgs[i], W, H);
+			}
+		}
+	}
+	function init() { 
+		RsizeAllImageById("pictureLink", 150, 113); 
+	}
 function go(){
 			var pageNum = document.getElementById('curPages').value;
 			//alert(pageNum);//获取跳转页码
@@ -184,6 +200,11 @@ function go(){
     <display:column title='门店名称'>
     	<span style="align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
     		<a href="javascript:detail('<c:out value="${storInfo.id}"/>')"><c:out value="${storInfo.storeName}"/></a>
+    	</span>
+    </display:column>
+    <display:column title='门店LOGO'>
+    	<span style="align:center;width:100;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+    		<img src="../${storInfo.storeLogo }" title="${storInfo.storeName}" name="storeLogo" width="150" height="113" border="0" id="storeLogo" />
     	</span>
     </display:column>
 	<display:column title='门店号'>

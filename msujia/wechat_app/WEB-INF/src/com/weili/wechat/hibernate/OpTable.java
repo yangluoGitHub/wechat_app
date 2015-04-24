@@ -24,6 +24,8 @@ public class OpTable implements java.io.Serializable {
 	private Integer passwdError;
 	private Integer signFlag;
 	private String storeId;
+	private String longitude;
+	private String latitude;
 
 	// Constructors
 
@@ -50,7 +52,7 @@ public class OpTable implements java.io.Serializable {
 			Integer status, Integer onlineFlag, String phone, String mobile,
 			String email, String photo, String loginIp, String loginTime,
 			String passwdExpiration, Integer passwdError, Integer signFlag,
-			String storeId) {
+			String storeId, String longitude, String latitude) {
 		this.no = no;
 		this.sysRole = sysRole;
 		this.passwd = passwd;
@@ -67,6 +69,8 @@ public class OpTable implements java.io.Serializable {
 		this.passwdError = passwdError;
 		this.signFlag = signFlag;
 		this.storeId = storeId;
+		this.longitude = longitude;
+		this.latitude = latitude;
 	}
 
 	// Property accessors
@@ -197,6 +201,22 @@ public class OpTable implements java.io.Serializable {
 
 	public void setStoreId(String storeId) {
 		this.storeId = storeId;
+	}
+
+	public String getLongitude() {
+		return this.longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getLatitude() {
+		return this.latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 
 }

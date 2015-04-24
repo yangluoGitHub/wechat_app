@@ -1,5 +1,6 @@
 package com.weili.wechat.web.manage;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -56,9 +59,9 @@ public class StoreInfoController extends MultiActionController{
 			
 			List storeInfoList = this.getStoreInfoService().qryStoreInfo(params); 
 			ModelAndView mv = new ModelAndView("manage/store_info_qry")
-								  .addObject("storeInfoList", storeInfoList);
-								  //.addObject("storeNo", storeNo)
-								  //.addObject("storeName", storeName);
+								  .addObject("storeInfoList", storeInfoList)
+								  .addObject("storeNo", storeNo)
+								  .addObject("storeName", storeName);
 			return mv;
 		} catch (Exception e) {
 			 log.error("查询异常："+ e.getMessage());
@@ -151,6 +154,27 @@ public class StoreInfoController extends MultiActionController{
 			int deliveryTime = Integer.parseInt(request.getParameter("deliveryTime"));
 			int onLine = Integer.parseInt(request.getParameter("onLine"));
 			
+			String storeLongitude = StringUtil.parseString(request.getParameter("storeLongitude"));
+			String storeLatitude = StringUtil.parseString(request.getParameter("storeLatitude"));
+			
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			MultipartFile file = multipartRequest.getFile("storeLogo");
+			if (file == null) {
+				return new ModelAndView("info", "message", "请选择要上传的文件!");
+			}
+			String fileOriginalName = file.getOriginalFilename();
+			String storeLogo = "upload/store/" + storeNo + "/" + fileOriginalName;
+			String storePath = request.getSession().getServletContext().getRealPath("upload/store/" + storeNo);
+			File targetFile = new File(storePath, fileOriginalName);
+			if (!targetFile.exists()) {
+				targetFile.mkdirs();
+			}
+			try {
+				file.transferTo(targetFile);
+			} catch (Exception e) {
+				log.error("上传图片失败：" + e.getMessage());
+				return new ModelAndView("info", "message", "上传图片失败");
+			}
 			
 			StoreInfoVO sInfoVO = new StoreInfoVO();
 			sInfoVO.setAddress(address);
@@ -167,6 +191,13 @@ public class StoreInfoController extends MultiActionController{
 			sInfoVO.setStoreNo(storeNo);
 			
 			sInfoVO.setId(UUID.randomUUID().toString());
+			
+			
+			//add by yangluo since 2014/04/24
+			sInfoVO.setStoreLogo(storeLogo);
+			sInfoVO.setNotifySet(1);
+			sInfoVO.setStoreLongitude(storeLongitude);
+			sInfoVO.setStoreLatitude(storeLatitude);
 			/*
 			String[] clArry = null;
 			if (!"".equals(storeClStr)) {
@@ -192,10 +223,16 @@ public class StoreInfoController extends MultiActionController{
 			sInfoVO.setStoreClVO1(storeClVO1);
 			try {
 				if (this.getStoreInfoService().addStoreInfo(sInfoVO) != 0) {
+					if (targetFile.isFile() && targetFile.exists()) {
+						  targetFile.delete();
+					}
 					return new ModelAndView("info","message", this.getStoreInfoService().getRetMsg());
 				}
 			    return new ModelAndView("pageinfo","message","添加成功").addObject("menuURL","storeInfo.do?action=qry");
 			} catch (Exception e) {
+				  if (targetFile.isFile() && targetFile.exists()) {
+					  targetFile.delete();
+				  }
 				  return new ModelAndView("info","message","添加失败:"+e);
 			}
 		} catch (Exception e) {
@@ -241,6 +278,29 @@ public class StoreInfoController extends MultiActionController{
 			int deliveryTime = Integer.parseInt(request.getParameter("deliveryTime"));
 			int onLine = Integer.parseInt(request.getParameter("onLine"));
 			
+			String storeLongitude = StringUtil.parseString(request.getParameter("storeLongitude"));
+			String storeLatitude = StringUtil.parseString(request.getParameter("storeLatitude"));
+			
+			String oldStoreLogo = StringUtil.parseString(request.getParameter("oldStoreLogo"));
+			
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			MultipartFile file = multipartRequest.getFile("storeLogo");
+			if (file == null) {
+				return new ModelAndView("info", "message", "请选择要上传的文件!");
+			}
+			String fileOriginalName = file.getOriginalFilename();
+			String storeLogo = "upload/store/" + storeNo + "/" + fileOriginalName;
+			String storePath = request.getSession().getServletContext().getRealPath("upload/store/" + storeNo);
+			File targetFile = new File(storePath, fileOriginalName);
+			if (!targetFile.exists()) {
+				targetFile.mkdirs();
+			}
+			try {
+				file.transferTo(targetFile);
+			} catch (Exception e) {
+				log.error("上传图片失败：" + e.getMessage());
+				return new ModelAndView("info", "message", "上传图片失败");
+			}
 			
 			StoreInfoVO sInfoVO = new StoreInfoVO();
 			sInfoVO.setAddress(address);
@@ -257,6 +317,12 @@ public class StoreInfoController extends MultiActionController{
 			sInfoVO.setStoreNo(storeNo);
 			
 			sInfoVO.setId(id);
+			
+			//add by yangluo since 2014/04/24
+			sInfoVO.setStoreLogo(storeLogo);
+			sInfoVO.setNotifySet(1);
+			sInfoVO.setStoreLongitude(storeLongitude);
+			sInfoVO.setStoreLatitude(storeLatitude);
 			/*
 			String[] clArry = null;
 			if (!"".equals(storeClStr)) {
@@ -279,12 +345,25 @@ public class StoreInfoController extends MultiActionController{
 			*/
 			StoreClassificationInfoVO storeClVO1 = new StoreClassificationInfoVO(storeClassificationId);
 			sInfoVO.setStoreClVO1(storeClVO1);
+			
+			String oppositePath = "upload/store/" + storeNo + "/";
+			String oldFileName = oldStoreLogo.substring(oldStoreLogo.indexOf(oppositePath)+oppositePath.length());
+			File oldFile = new File(storePath, oldFileName);
 			try {
 				if(this.getStoreInfoService().modStoreInfo(sInfoVO) != 0){
+					if (targetFile.isFile() && targetFile.exists()) {
+						  targetFile.delete();
+					}
 					return new ModelAndView("info","message", this.getStoreInfoService().getRetMsg());
+				}
+				if (oldFile.isFile() && oldFile.exists()) {
+					oldFile.delete();
 				}
 			    return new ModelAndView("pageinfo","message","修改成功").addObject("menuURL","storeInfo.do?action=qry");
 			} catch (Exception e) {
+				  if (targetFile.isFile() && targetFile.exists()) {
+					  targetFile.delete();
+				  }
 				  return new ModelAndView("info","message","修改失败:"+e);
 			}
 		} catch (Exception e) {
@@ -304,6 +383,17 @@ public class StoreInfoController extends MultiActionController{
 			if (this.getStoreInfoService().delStoreInfo(id) != 0) {
 				return new ModelAndView("info", "message", this.getStoreInfoService().getRetMsg());
 			}
+			
+			String storeNo = sInfoVO.getStoreNo();
+			String oppositePath = "upload/store/" + storeNo + "/";
+			String storeLogo = sInfoVO.getStoreLogo();
+			String storePath = request.getSession().getServletContext().getRealPath(oppositePath);
+			String fileOriginalName = storeLogo.substring(storeLogo.indexOf(oppositePath)+oppositePath.length());
+			File targetFile = new File(storePath, fileOriginalName);
+			if (targetFile.isFile() && targetFile.exists()) {
+				  targetFile.delete();
+			}
+			
 			return new ModelAndView("pageinfo_pagedecrease", "message","删除成功").addObject("url", "storeInfo.do?action=qry");
 		
 		}catch (DataIntegrityViolationException e) {
@@ -322,33 +412,6 @@ public class StoreInfoController extends MultiActionController{
 			log.error("进入详细页面异常：" + e.getMessage());
 			return new ModelAndView("info", "message", "进入详细页面异常!");
 		}
-	}
-	public void saveMenuBtn(HttpServletRequest request,HttpServletResponse response) throws IOException{
-		
-		PrintWriter out = response.getWriter();
-		try {
-			
-			String wechatOriginId = StringUtil.parseString(request.getParameter("id"));
-			String data =request.getParameter("data");
-			data = (data == null) ? "" : new String(data.getBytes("ISO-8859-1"), "utf-8");
-			data = java.net.URLDecoder.decode(data,"UTF-8");
-			
-			/**
-			 * 默认一个公众号只用一套 菜单
-			 */
-			
-			out.print("error");
-			out.close();
-			out = null;
-		} catch (Exception e) {
-			// TODO: handle exception
-			log.error(e);
-			out.print("error");
-			out.close();
-			out = null;
-			
-		}
-
 	}
 	
 }

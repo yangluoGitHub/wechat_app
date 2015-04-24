@@ -50,7 +50,7 @@ function checkForm(){
 </script>
 <br>
 
-<form name="form1" method="post" action="storeInfo.do?action=add">
+<form name="form1" method="post" action="storeInfo.do?action=add" enctype="multipart/form-data">
 <table id="infoTable" align="center" width="650" border="0" cellspacing="1" cellpadding="5" class="table1" >
  <tr class="tr1">
     <td nowrap colspan="2" align="center">添加门店信息</td>
@@ -114,6 +114,9 @@ function checkForm(){
     <td nowrap>门店地址：</td>
     <td nowrap><input type="text" name="address"  maxlength="200">&nbsp;*</td> 
   </tr>
+   <tr class="tr3">
+    <td nowrap>门店logo：</td>
+    <td nowrap><input type="file" name="storeLogo" id="storeLogo" >&nbsp;*.png.jpg</td> 
   </tr>
     <tr class="tr3">
     <td nowrap>是否启用：</td>

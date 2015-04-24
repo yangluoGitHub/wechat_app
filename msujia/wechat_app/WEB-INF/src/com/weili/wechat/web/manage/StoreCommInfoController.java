@@ -290,11 +290,14 @@ public class StoreCommInfoController extends MultiActionController{
 			File oldFile = new File(storePath, oldFileName);
 			try {
 				if (this.getStoreCommInfoService().modStoreCommInfo(commInfoVO) != 0) {
-					if (oldFile.isFile() && oldFile.exists()) {
-						oldFile.delete();
+					if (targetFile.isFile() && targetFile.exists()) {
+						  targetFile.delete();
 					}
 					return new ModelAndView("info","message",this.getStoreCommInfoService().getRetMsg());
 				} 
+				if (oldFile.isFile() && oldFile.exists()) {
+					oldFile.delete();
+				}
 			    return new ModelAndView("pageinfo","message","ÐÞ¸Ä³É¹¦").addObject("menuURL","storeCommInfo.do?action=qry");
 			} catch (Exception e) {
 				  if (targetFile.isFile() && targetFile.exists()) {
